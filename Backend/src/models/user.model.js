@@ -1,11 +1,11 @@
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 class Usuario {
-  constructor(nombre, email, telefono, contraseña, rol) {
+  constructor(nombre, email, telefono, contrasena, rol) {
     this.id_usuario = uuidv4();
     this.nombre = nombre;
     this.email = email;
-    this.contraseña = contraseña;
+    this.contrasena = contrasena;
     this.telefono = telefono;
     this.rol = rol;
   }
@@ -14,7 +14,7 @@ class Usuario {
     let nuevoUsuario = new Usuario(
       dataUser.nombre,
       dataUser.email,
-      dataUser["contraseña"],
+      dataUser["contrasena"],
       dataUser.telefono,
       dataUser.rol
     );
@@ -26,16 +26,18 @@ class Usuario {
 function guardarUsuario(dataBody) {
   const usuarioNuevo = Usuario.fromJSONtoObjectUsuario(dataBody);
 
-  let usuariosRegistrados = obtenerObjetosBD("./db/usuarios.txt");
+  let usuariosRegistrados = obtenerObjetosBD("../backend/src/db/usuarios.txt");
 
   usuariosRegistrados.push(usuarioNuevo);
-  escribirObjetosBD("./db/usuarios.txt", usuariosRegistrados);
+  escribirObjetosBD("../backend/src/db/usuarios.txt", usuariosRegistrados);
 
   return usuarioNuevo;
 }
 function getUserById(idUsuario) {
   try {
-    let usuariosRegistrados = obtenerObjetosBD("./db/usuarios.txt");
+    let usuariosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/usuarios.txt"
+    );
     //recorremos los objetos "usuario" dentro de la coleccion de ususarios registrados
     for (usuario of usuariosRegistrados) {
       if (usuario.idUsuario === idUsuario) {
@@ -49,7 +51,9 @@ function getUserById(idUsuario) {
 
 function getUsuarios() {
   try {
-    let usuariosRegistrados = obtenerObjetosBD("./db/usuarios.txt");
+    let usuariosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/usuarios.txt"
+    );
 
     return usuariosRegistrados;
   } catch (error) {
@@ -60,7 +64,9 @@ function getUsuarios() {
 
 function eliminarUsuario(idUsuario) {
   try {
-    let usuariosRegistrados = obtenerObjetosBD("./db/usuarios.txt");
+    let usuariosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/usuarios.txt"
+    );
 
     usuariosRegistrados.filter((usuario) => {
       return usuario.idUsuario === idUsuario ? usuario : [];

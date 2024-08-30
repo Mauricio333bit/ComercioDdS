@@ -1,21 +1,20 @@
 const { v4: uuidv4 } = require("uuid");
 class Comercio {
-  constructor(nombre, email, telefono, contraseña, rol) {
+  constructor(fk_idUsuario, nombre, cuit, direccion) {
     this.idComercio = uuidv4();
     this.nombre = nombre;
-    this.email = email;
-    this.contraseña = contraseña;
-    this.telefono = telefono;
-    this.rol = rol;
+    this.cuit = cuit;
+    this.direccion = direccion;
+    this.fk_idUsuario = fk_idUsuario;
   }
 
   static fromJSONtoObjectComercio(dataComercio) {
     let nuevoComercio = new Comercio(
+      dataComercio.idComercio,
       dataComercio.nombre,
-      dataComercio.email,
-      dataComercio["contraseña"],
-      dataComercio.telefono,
-      dataComercio.rol
+      dataComercio.cuit,
+      dataComercio.direccion,
+      dataComercio.fk_idUsuario
     );
 
     return nuevoComercio;

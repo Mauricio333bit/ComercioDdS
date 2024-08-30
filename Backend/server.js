@@ -4,6 +4,7 @@ const app = express();
 
 const userController = require("./src/controllers/user.controller");
 const comercioController = require("./src/controllers/comercio.controller");
+const productoController = require("./src/controllers/producto.controller");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,8 +25,11 @@ app.delete("/usuario/:id", userController.eliminarUsuario);
 
 //rutas comercio
 
-app.post("/comercio/registrar", comercioController.registerComercio);
+app.post("/comercio/registrar/:id", comercioController.registerComercio);
 
 // app.post("/comercio/:id", comercio.controller.tomarComercioPorId);
 // app.get("/comercio/all", comercio.controller.tomarTodosLosComercios);
 // app.delete("/comercio/:id", comercio.controller.eliminarCoemrcio);
+
+//rutas productos
+app.post("/producto/registrar/:id", productoController.registerProducto);
