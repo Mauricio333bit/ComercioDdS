@@ -1,4 +1,4 @@
-const User = require("./src/models/user.model.js");
+const User = require("./src/models/usuario.model.js");
 
 function autenticarUsuario(reqBody) {
   // console.log("seguridad --> modelo 'getUsuarios()'");

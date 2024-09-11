@@ -2,7 +2,7 @@ const express = require("express");
 
 const app = express();
 
-const userController = require("./src/controllers/user.controller");
+const userController = require("./src/controllers/usuario.controller");
 const comercioController = require("./src/controllers/comercio.controller");
 const productoController = require("./src/controllers/producto.controller");
 
@@ -25,9 +25,8 @@ app.delete("/usuario/:id", userController.eliminarUsuario);
 
 //rutas comercio
 
-app.post("/comercio/registrar/:id", comercioController.registerComercio);
+app.post("/comercio/registrar/:id", comercioController.registrarComercio);
 
-// app.post("/comercio/:id", comercio.controller.tomarComercioPorId);
 // app.get("/comercio/all", comercio.controller.tomarTodosLosComercios);
 // app.delete("/comercio/:id", comercio.controller.eliminarCoemrcio);
 

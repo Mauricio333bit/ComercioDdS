@@ -1,4 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
+const fs = require("fs");
+const Producto = require("./producto.model");
 class Comercio {
   constructor(fk_idUsuario, nombre, cuit, direccion) {
     this.idComercio = uuidv4();
@@ -6,6 +8,7 @@ class Comercio {
     this.cuit = cuit;
     this.direccion = direccion;
     this.fk_idUsuario = fk_idUsuario;
+    this.productos = [];
   }
 
   static fromJSONtoObjectComercio(dataComercio) {
@@ -16,14 +19,47 @@ class Comercio {
       dataComercio.direccion,
       dataComercio.fk_idUsuario
     );
-
+    console.log(nuevoComercio);
     return nuevoComercio;
   }
 }
-function guardarComercio(dataBody) {
-  const comercioNuevo = Comercio.fromJSONtoObjectComercio(dataBody);
+function guardarComercio(idUsuario, dataBody) {
+  console.log(dataBody);
+  const comercioNuevo = new Comercio(
+    idUsuario,
+    dataBody.nombre,
+    dataBody.cuit,
+    dataBody.direccion
+  );
+  console.log(comercioNuevo);
+  let comerciosRegistrados = obtenerObjetosBD(
+    "../Backend/src/db/comercios.txt"
+  );
+  console.log(comerciosRegistrados);
+  comerciosRegistrados.push(comercioNuevo);
+  escribirObjetosBD("../Backend/src/db/comercios.txt", comerciosRegistrados);
 
-  let comerciosRegistrados = obtenerObjetosBD("../db/comercios.txt");
+  return comercioNuevo;
+}
+function tomarComercioPorId(idComercio) {
+  try {
+    let comerciosRegistrados = obtenerObjetosBD("../db/comercios.txt");
+    //recorremos los objetos "comercio" dentro de la coleccion de ususarios registrados
+    for (comercio of comerciosRegistrados) {
+      if (comercio.idComercio === idComercio) {
+        return comercio;
+      }
+    }
+  } catch (error) {
+    console.log(
+      error + "/nel comercio con el id " + idComercio + " no se encontró"
+    );
+  }
+}
+
+function agregarProducto(ProductoData) {
+  const productoNuevo = new Producto(...ProductoData);
+  this.productos.push(productoNuevo);
 
   comerciosRegistrados.push(comercioNuevoNuevo);
   escribirObjetosBD("../db/comercios.txt", comercioNuevo);
@@ -32,9 +68,10 @@ function guardarComercio(dataBody) {
 }
 
 //Metodos para consultar bd. path-> ruta del archivo .txt--------------------------------------------------------
+
 function obtenerObjetosBD(path) {
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
-  let objetosEnBD = JSON.parse(stringDeObjetos);
+  let objetosEnBD = [JSON.parse(stringDeObjetos)];
   if (!objetosEnBD) {
     return [];
   }

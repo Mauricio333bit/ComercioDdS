@@ -1,6 +1,6 @@
 const seguridad = require("../../seguridad.js");
 
-const User = require("../models/user.model.js");
+const User = require("../models/usuario.model.js");
 
 const registerUser = (req, res) => {
   try {
