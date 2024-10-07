@@ -1,19 +1,23 @@
 const { v4: uuidv4 } = require("uuid");
 class Imagen {
-  constructor(descripcion, url) {
+  constructor(fk_idProducto, bites, descripcion, url) {
     this.idImagen = uuidv4();
+    this.fk_idProducto = fk_idProducto;
+    this.bites = bites;
     this.descripcion = descripcion;
     this.url = url;
   }
 
   static fromJSONtoObjectImagen(dataImagen) {
-    let nuevoImagen = new Imagen(
+    let nuevaImagen = new Imagen(
+      dataImagen.fk_idProducto,
       dataImagen.idImagen,
+      dataImagen.bites,
       dataImagen.descripcion,
       dataImagen.url
     );
 
-    return nuevoImagen;
+    return nuevaImagen;
   }
 }
 function guardarImagen(dataBody) {

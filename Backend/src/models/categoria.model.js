@@ -15,14 +15,14 @@ class Categoria {
   }
 }
 function guardarCategoria(dataBody) {
-  const CategoriaNuevo = Categoria.fromJSONtoObjectCategoria(dataBody);
+  const CategoriaNew = Categoria.fromJSONtoObjectCategoria(dataBody);
 
-  let CategoriasRegistrados = obtenerObjetosBD("../db/categorias.txt");
+  let CategoriasRegistradas = obtenerObjetosBD("../db/categorias.txt");
 
-  CategoriasRegistrados.push(CategoriaNuevoNuevo);
-  escribirObjetosBD("../db/categorias.txt", CategoriaNuevo);
+  CategoriasRegistradas.push(CategoriaNew);
+  escribirObjetosBD("../db/categorias.txt", CategoriaNew);
 
-  return CategoriaNuevo;
+  return CategoriaNew;
 }
 
 //Metodos para consultar bd. path-> ruta del archivo .txt--------------------------------------------------------

@@ -42,10 +42,15 @@ function guardarComercio(idUsuario, dataBody) {
   return comercioNuevo;
 }
 function tomarComercioPorId(idComercio) {
+  console.log(idComercio);
   try {
-    let comerciosRegistrados = obtenerObjetosBD("../db/comercios.txt");
+    let comerciosRegistrados = obtenerObjetosBD(
+      "../Backend/src/db/comercios.txt"
+    );
+    console.log(comerciosRegistrados);
     //recorremos los objetos "comercio" dentro de la coleccion de ususarios registrados
     for (comercio of comerciosRegistrados) {
+      console.log(comercio);
       if (comercio.idComercio === idComercio) {
         return comercio;
       }
@@ -70,8 +75,10 @@ function agregarProducto(ProductoData) {
 //Metodos para consultar bd. path-> ruta del archivo .txt--------------------------------------------------------
 
 function obtenerObjetosBD(path) {
+  try {
+  } catch (error) {}
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
-  let objetosEnBD = [JSON.parse(stringDeObjetos)];
+  let objetosEnBD = JSON.parse(stringDeObjetos);
   if (!objetosEnBD) {
     return [];
   }
@@ -85,6 +92,39 @@ function escribirObjetosBD(path, objeto) {
   fs.writeFileSync(path, JSON.stringify(objeto));
   return true;
 }
+//obtiene los comercios almacenados en la bd y los devuelve
+function getComercios() {
+  try {
+    let comerciosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/comercios.txt"
+    );
+
+    return comerciosRegistrados;
+  } catch (error) {
+    console.error("Error al leer o parsear el archivo de comercios:", error);
+    return [];
+  }
+}
+
+function eliminarComercio(idComercio) {
+  try {
+    let comerciosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/comercios.txt"
+    );
+
+    comerciosRegistrados.filter((comercio) => {
+      return comercio.idComercio === idComercio ? usuario : [];
+    });
+    escribirObjetosBD(comerciosRegistrados);
+    return comerciosRegistrados;
+  } catch (error) {
+    return new Error({ message: "error al eliminar" });
+  }
+}
 module.exports = {
   guardarComercio,
+  tomarComercioPorId,
+  getComercios,
+  eliminarComercio,
+  agregarProducto,
 };

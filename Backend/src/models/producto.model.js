@@ -45,6 +45,8 @@ class Producto {
 function guardarProducto(data) {
   const productoNuevo = Producto.fromJSONtoObjectProducto(data);
 
+  const productoNew = new Producto({ ...data });
+
   let productosRegistrados = obtenerObjetosBD(
     "../backend/src/db/productos.txt"
   );

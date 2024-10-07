@@ -1,6 +1,6 @@
 const Producto = require("../models/producto.model");
 
-const registerProducto = (req, res) => {
+const registrarProducto = (req, res) => {
   try {
     const {
       nombre,
@@ -8,11 +8,12 @@ const registerProducto = (req, res) => {
       detalles,
       categoria,
       disponibilidad,
-      imagenes,
+
       oferta,
       descuento,
     } = req.body;
     const id = req.params.id;
+    const imgProducto = req.files;
 
     const pro1 = new Producto(id);
     console.log(pro1);
@@ -22,7 +23,7 @@ const registerProducto = (req, res) => {
       detalles,
       categoria,
       disponibilidad,
-      imagenes,
+      imgProducto,
       oferta,
       descuento,
       id
@@ -35,7 +36,7 @@ const registerProducto = (req, res) => {
     return res.status(500).send({ error: error.message });
   }
 };
-const getUserById = (req, res) => {
+const getProductoById = (req, res) => {
   try {
     const id = req.params.id;
 
@@ -50,7 +51,7 @@ const getUserById = (req, res) => {
     res.status(500).send({ message: "Usuario no encontrado cuyo id: " + id });
   }
 };
-const getAllUsers = (req, res) => {
+const getAllProducto = (req, res) => {
   try {
     const usuariosRegistrados = User.getUsuarios();
 
@@ -61,18 +62,8 @@ const getAllUsers = (req, res) => {
     return res.status(500).send({ error: error.message });
   }
 };
-const loguearUsuario = (req, res) => {
-  try {
-    let usuarioAutorizado = seguridad.autenticarUsuario(req.body);
-    if (!usuarioAutorizado) {
-      res.status(400).send({ message: "Los datos ingresados no son validos" });
-    }
-    res.status(200).send("Usuario logueado con exito");
-  } catch (error) {
-    res.status(404).send({ error: error.message });
-  }
-};
-const eliminarUsuario = (req, res) => {
+
+const eliminarProducto = (req, res) => {
   try {
     const id = req.params.id;
     let usuariosActualizados = User.eliminarUsuario(id);
@@ -82,11 +73,9 @@ const eliminarUsuario = (req, res) => {
     res.status(400).send({ message: "no se pudo eliminar" });
   }
 };
-const editarUsusario = (req, res) => {
+const editarProducto = (req, res) => {
   try {
     const id = req.params.id;
   } catch (error) {}
 };
-module.exports = {
-  registerProducto,
-};
+module.exports = {};

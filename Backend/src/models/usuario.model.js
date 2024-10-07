@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
+
 class Usuario {
   constructor(nombre, email, telefono, contrasena, rol) {
     this.id_usuario = uuidv4();
@@ -38,7 +39,7 @@ function getUserById(idUsuario) {
     let usuariosRegistrados = obtenerObjetosBD(
       "../backend/src/db/usuarios.txt"
     );
-    //recorremos los objetos "usuario" dentro de la coleccion de ususarios registrados
+    //recorremos los objetos "usuario" dentro de la coleccion de ususarios registrados, se puede usar esto o el find
     for (usuario of usuariosRegistrados) {
       if (usuario.idUsuario === idUsuario) {
         return usuario;
@@ -46,7 +47,17 @@ function getUserById(idUsuario) {
     }
   } catch (error) {
     console.log(error);
+    return null;
   }
+
+  //find
+  // try {
+  //   let usuariosRegistrados = obtenerObjetosBD();
+  //   return usuariosRegistrados.find(usuario => usuario.id_usuario === idUsuario);
+  // } catch (error) {
+  //   console.log(error);
+  //   return null;
+  // }
 }
 
 function getUsuarios() {
@@ -68,16 +79,53 @@ function eliminarUsuario(idUsuario) {
       "../backend/src/db/usuarios.txt"
     );
 
-    usuariosRegistrados.filter((usuario) => {
-      return usuario.idUsuario === idUsuario ? usuario : [];
-    });
-    escribirObjetosBD(usuariosRegistrados);
-    return usuariosRegistrados;
+    const usuariosActualizados = usuariosRegistrados.filter(
+      (usuario) => usuario.id_usuario !== idUsuario
+    );
+
+    escribirObjetosBD(usuariosActualizados);
+    return usuariosActualizados;
   } catch (error) {
     return new Error({ message: "error al eliminar" });
   }
 }
-function actualizarUsuario(idUsuario, usuarioUdata) {}
+function actualizarUsuario(idUsuario, datosActualizados) {
+  try {
+    let usuariosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/usuarios.txt"
+    );
+    //encontrar el indice donde se ubica el usuario a actualizar
+    const indiceUsuario = usuariosRegistrados.findIndex(
+      (usuario) => usuario.id_usuario === idUsuario
+    );
+    //cuando no encuentre coincidencia el findIndex retorna el valor -1
+    if (indiceUsuario === -1) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    // Actualizamos solo los campos proporcionados
+    //   "..." este operador, permite "desempaquetar" los elementos de un objeto o array.
+
+    const usuarioActualizado = {
+      ...usuariosRegistrados[indiceUsuario], //"desempaqueta" todas las propiedades y sus valores
+      ...datosActualizados, // cualquier propiedad que exista en ambos objetos será sobrescrita por el valor en datosActualizados, las demas se mantienen y no se modifian
+    };
+
+    // Aseguramos que el ID sea el que viene en parametros
+    usuarioActualizado.id_usuario = idUsuario;
+
+    // Reemplazamos el usuario en el array
+    usuariosRegistrados[indiceUsuario] = usuarioActualizado;
+
+    // Escribimos los cambios en el archivo
+    escribirObjetosBD("../backend/src/db/usuarios.txt", usuariosRegistrados);
+
+    return usuarioActualizado;
+  } catch (error) {
+    console.error("Error al actualizar usuario:", error.message);
+    throw error;
+  }
+}
 
 //Metodos para consultar bd. path-> ruta del archivo .json--------------------------------------------------------
 function obtenerObjetosBD(path) {
@@ -102,4 +150,5 @@ module.exports = {
   getUsuarios,
   getUserById,
   eliminarUsuario,
+  actualizarUsuario,
 };
