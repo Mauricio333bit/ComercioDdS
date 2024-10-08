@@ -26,16 +26,15 @@ class Producto {
 
   static fromJSONtoObjectProducto(data) {
     let productoNuevo = new Producto(
-      data.id_producto,
-      data.nombre_producto,
+      data.nombre,
       data.precio,
       data.detalles,
       data.categoria,
       data.disponibilidad,
-      data.imagenes,
+      data.imgProducto,
       data.oferta,
       data.descuento,
-      data.fk_id_comercio
+      data.idComercio
     );
 
     return productoNuevo;
@@ -43,13 +42,13 @@ class Producto {
 }
 
 function guardarProducto(data) {
+  console.log("Aaaaaa");
+  console.log(data);
   const productoNuevo = Producto.fromJSONtoObjectProducto(data);
-
-  const productoNew = new Producto({ ...data });
-
-  let productosRegistrados = obtenerObjetosBD(
-    "../backend/src/db/productos.txt"
-  );
+  console.log(productoNuevo);
+  let productosRegistrados =
+    obtenerObjetosBD("../backend/src/db/productos.txt") || [];
+  console.log(productosRegistrados);
 
   productosRegistrados.push(productoNuevo);
 
@@ -57,14 +56,15 @@ function guardarProducto(data) {
 
   return productoNuevo;
 }
-
 //Metodos para consultar bd. path-> ruta del archivo .json--------------------------------------------------------
 function obtenerObjetosBD(path) {
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
-  let objetosEnBD = JSON.parse(stringDeObjetos);
-  if (!objetosEnBD) {
-    return [];
+  if (!stringDeObjetos.trim()) {
+    console.log("El archivo está vacío.");
+    return []; // Retorna un array vacío cuando aun no se cargan productos
   }
+  let objetosEnBD = JSON.parse(stringDeObjetos);
+
   return objetosEnBD;
 }
 

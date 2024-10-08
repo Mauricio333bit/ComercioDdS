@@ -1,41 +1,48 @@
 const Producto = require("../models/producto.model");
-
+//con los datos que vinen en el cuerpo(body) de la solicitud
 const registrarProducto = (req, res) => {
   try {
+    console.log(req.file);
+    console.log(req.body);
+    // Desestructurar el cuerpo de la solicitud para obtener los datos del producto
     const {
       nombre,
       precio,
       detalles,
       categoria,
       disponibilidad,
-
       oferta,
       descuento,
     } = req.body;
-    const id = req.params.id;
-    const imgProducto = req.files;
 
-    const pro1 = new Producto(id);
-    console.log(pro1);
-    const productoNuevo = Producto.guardarProducto(
+    // El id del comercio lo obtenemos de los parámetros de la URL
+    const idComercio = req.params.id;
+
+    // Obtener las rutas de las imágenes subidas
+    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto
+
+    // Registrar el nuevo producto
+    const productoNuevo = Producto.guardarProducto({
       nombre,
       precio,
       detalles,
       categoria,
       disponibilidad,
-      imgProducto,
+      imgProducto, // Pasar las rutas de las imágenes
       oferta,
       descuento,
-      id
-    );
+      idComercio,
+    });
 
-    return res
-      .status(201)
-      .send({ message: "producto registrado", productoNuevo });
+    return res.status(201).send({
+      message: "Producto registrado exitosamente",
+      producto: productoNuevo,
+    });
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }
 };
+
 const getProductoById = (req, res) => {
   try {
     const id = req.params.id;
@@ -78,4 +85,4 @@ const editarProducto = (req, res) => {
     const id = req.params.id;
   } catch (error) {}
 };
-module.exports = {};
+module.exports = { registrarProducto };

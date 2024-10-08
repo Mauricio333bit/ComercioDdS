@@ -1,0 +1,1 @@
+[{"id_producto":"a98c16a7-66f9-4f55-b6ee-d5625325aaf0","nombre_producto":"pan","precio":"25","detalles":"no hay","categoria":"1","disponibilidad":"true","imagenes":["uploads\\productos\\1728361263027.png","uploads\\productos\\1728361263051.jpg"],"oferta":"","descuento":"","fk_id_comercio":"123123"}]

@@ -34,10 +34,12 @@ function guardarImagen(dataBody) {
 //Metodos para consultar bd. path-> ruta del archivo .txt--------------------------------------------------------
 function obtenerObjetosBD(path) {
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
-  let objetosEnBD = JSON.parse(stringDeObjetos);
-  if (!objetosEnBD) {
-    return [];
+  if (!stringDeObjetos.trim()) {
+    console.log("El archivo está vacío.");
+    return []; // Retorna un array vacío cuando aun no se cargan productos
   }
+  let objetosEnBD = JSON.parse(stringDeObjetos);
+
   return objetosEnBD;
 }
 
