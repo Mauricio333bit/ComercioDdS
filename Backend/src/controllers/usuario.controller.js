@@ -44,7 +44,7 @@ const getAllUsers = (req, res) => {
     return res.status(500).send({ error: error.message });
   }
 };
-const loguearUsuario = (req, res) => {
+const loginUser = (req, res) => {
   try {
     let usuarioAutorizado = seguridad.autenticarUsuario(req.body);
     if (!usuarioAutorizado) {
@@ -55,7 +55,7 @@ const loguearUsuario = (req, res) => {
     res.status(404).send({ error: error.message });
   }
 };
-const eliminarUsuario = (req, res) => {
+const deleteUser = (req, res) => {
   try {
     const id = req.params.id;
     let usuariosActualizados = User.eliminarUsuario(id);
@@ -65,7 +65,7 @@ const eliminarUsuario = (req, res) => {
     res.status(400).send({ message: "No se pudo eliminar" });
   }
 };
-const editarUsuario = (req, res) => {
+const editUser = (req, res) => {
   try {
     const id = req.params.id;
     const newData = req.body;
@@ -87,8 +87,8 @@ const editarUsuario = (req, res) => {
 module.exports = {
   registerUser,
   getAllUsers,
-  loguearUsuario,
+  loginUser,
   getUserById,
-  eliminarUsuario,
-  editarUsuario,
+  deleteUser,
+  editUser,
 };

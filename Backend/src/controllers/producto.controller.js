@@ -1,4 +1,6 @@
 const Producto = require("../models/producto.model");
+//al de comercio lo usamos para agregar,revisar este caso de uso***
+const Comercio = require("../models/comercio.model");
 //con los datos que vinen en el cuerpo(body) de la solicitud
 const registrarProducto = (req, res) => {
   try {
@@ -33,6 +35,8 @@ const registrarProducto = (req, res) => {
       descuento,
       idComercio,
     });
+    //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
+    Comercio.agregarProductoAComercio(idComercio, productoNuevo);
 
     return res.status(201).send({
       message: "Producto registrado exitosamente",
@@ -47,24 +51,26 @@ const getProductoById = (req, res) => {
   try {
     const id = req.params.id;
 
-    const user = User.getUserById(id);
-    if (!user) {
+    const producto = Producto.tomarProductoPorId(id);
+    if (!producto) {
       res
         .status(404)
-        .send({ message: "El id ingresado no corresponde a ningun usuario" });
+        .send({ message: "El id ingresado no corresponde a ningun producto" });
     }
-    res.status(200).send(user);
+    res.status(200).send(producto);
   } catch (error) {
-    res.status(500).send({ message: "Usuario no encontrado cuyo id: " + id });
+    res.status(500).send({
+      message: "Prod no encontrado cuyo id: " + id + ". error en controller.",
+    });
   }
 };
-const getAllProducto = (req, res) => {
+const getAllProducts = (req, res) => {
   try {
-    const usuariosRegistrados = User.getUsuarios();
+    const productosRegistrados = Producto.tomarProductos();
 
     return res
       .status(201)
-      .send({ message: "Usuarios registrados: ", usuariosRegistrados });
+      .send({ message: "Productos registrados: ", productosRegistrados });
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }
@@ -85,4 +91,4 @@ const editarProducto = (req, res) => {
     const id = req.params.id;
   } catch (error) {}
 };
-module.exports = { registrarProducto };
+module.exports = { registrarProducto, getProductoById, getAllProducts };

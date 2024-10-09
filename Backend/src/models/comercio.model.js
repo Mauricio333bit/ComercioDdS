@@ -1,6 +1,6 @@
 const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
-const Producto = require("./producto.model");
+
 class Comercio {
   constructor(fk_idUsuario, nombre, cuit, direccion) {
     this.idComercio = uuidv4();
@@ -10,8 +10,10 @@ class Comercio {
     this.fk_idUsuario = fk_idUsuario;
     this.productos = [];
   }
-
-  static fromJSONtoObjectComercio(dataComercio) {
+  agregarProducto(producto) {
+    this.productos.push(producto);
+  }
+  static deJsonAObjetoComercio(dataComercio) {
     let nuevoComercio = new Comercio(
       dataComercio.idComercio,
       dataComercio.nombre,
@@ -19,6 +21,7 @@ class Comercio {
       dataComercio.direccion,
       dataComercio.fk_idUsuario
     );
+    nuevoComercio.productos = dataComercio.productos || [];
     console.log(nuevoComercio);
     return nuevoComercio;
   }
@@ -61,17 +64,90 @@ function tomarComercioPorId(idComercio) {
     );
   }
 }
-
-function agregarProducto(ProductoData) {
-  const productoNuevo = new Producto(...ProductoData);
-  this.productos.push(productoNuevo);
-
-  comerciosRegistrados.push(comercioNuevoNuevo);
-  escribirObjetosBD("../db/comercios.txt", comercioNuevo);
-
-  return comercioNuevo;
+function tomarComercioPorIdUsuarioDueño(idUsuario) {
+  console.log(idUsuario);
+  try {
+    let comerciosRegistrados = obtenerObjetosBD(
+      "../Backend/src/db/comercios.txt"
+    );
+    console.log(comerciosRegistrados);
+    //recorremos los objetos "comercio" y se retorna el que tiene fk_idUsuario que pasamos
+    for (comercio of comerciosRegistrados) {
+      console.log(comercio);
+      if (comercio.fk_idUsuario === idUsuario) {
+        return comercio;
+      }
+    }
+  } catch (error) {
+    console.log(
+      error +
+        "/nel comercio cuyo dueño tiene el id " +
+        idUsuario +
+        " no se encontró"
+    );
+  }
 }
 
+//obtiene los comercios almacenados en la bd y los devuelve
+function tomarComercios() {
+  try {
+    let comerciosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/comercios.txt"
+    );
+
+    return comerciosRegistrados;
+  } catch (error) {
+    console.error("Error al leer o parsear el archivo de comercios:", error);
+    return [];
+  }
+}
+
+function eliminarComercio(idComercio) {
+  try {
+    let comerciosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/comercios.txt"
+    );
+
+    const comerciosActualizados = comerciosRegistrados.filter(
+      (comercio) => comercio.idComercio !== idComercio
+    );
+
+    escribirObjetosBD(comerciosActualizados);
+    return comerciosActualizados;
+  } catch (error) {
+    return new Error({ message: "error al eliminar desde el model" });
+  }
+}
+function agregarProductoAComercio(idComercio, producto) {
+  console.log("entrase a agregar prod");
+  let comerciosRegistrados = obtenerObjetosBD(
+    "../Backend/src/db/comercios.txt"
+  );
+
+  //encontramos el indice del comercio que le vampos a agregar el producto
+  const comercioIndex = comerciosRegistrados.findIndex(
+    (c) => c.idComercio === idComercio
+  );
+
+  if (comercioIndex === -1) {
+    throw new Error("Comercio no encontrado");
+  }
+
+  let comercio = Comercio.deJsonAObjetoComercio(
+    comerciosRegistrados[comercioIndex]
+  );
+
+  console.log(comercio);
+  comercio.agregarProducto(producto);
+  console.log(comercio);
+
+  //actualizamos los valores del comercio indicado por el nuevo obj con el produccto pusheado
+  comerciosRegistrados[comercioIndex] = comercio;
+
+  escribirObjetosBD("../Backend/src/db/comercios.txt", comerciosRegistrados);
+
+  return comercio;
+}
 //Metodos para consultar bd. path-> ruta del archivo .txt--------------------------------------------------------
 function obtenerObjetosBD(path) {
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
@@ -91,39 +167,11 @@ function escribirObjetosBD(path, objeto) {
   fs.writeFileSync(path, JSON.stringify(objeto));
   return true;
 }
-//obtiene los comercios almacenados en la bd y los devuelve
-function getComercios() {
-  try {
-    let comerciosRegistrados = obtenerObjetosBD(
-      "../backend/src/db/comercios.txt"
-    );
-
-    return comerciosRegistrados;
-  } catch (error) {
-    console.error("Error al leer o parsear el archivo de comercios:", error);
-    return [];
-  }
-}
-
-function eliminarComercio(idComercio) {
-  try {
-    let comerciosRegistrados = obtenerObjetosBD(
-      "../backend/src/db/comercios.txt"
-    );
-
-    comerciosRegistrados.filter((comercio) => {
-      return comercio.idComercio === idComercio ? usuario : [];
-    });
-    escribirObjetosBD(comerciosRegistrados);
-    return comerciosRegistrados;
-  } catch (error) {
-    return new Error({ message: "error al eliminar" });
-  }
-}
 module.exports = {
   guardarComercio,
   tomarComercioPorId,
-  getComercios,
+  tomarComercioPorIdUsuarioDueño,
+  tomarComercios,
   eliminarComercio,
-  agregarProducto,
+  agregarProductoAComercio,
 };

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
+
 class Producto {
   constructor(
     nombre,
@@ -46,6 +47,7 @@ function guardarProducto(data) {
   console.log(data);
   const productoNuevo = Producto.fromJSONtoObjectProducto(data);
   console.log(productoNuevo);
+
   let productosRegistrados =
     obtenerObjetosBD("../backend/src/db/productos.txt") || [];
   console.log(productosRegistrados);
@@ -56,6 +58,40 @@ function guardarProducto(data) {
 
   return productoNuevo;
 }
+function tomarProductoPorId(idProducto) {
+  try {
+    let productosRegistrados = obtenerObjetosBD(
+      "../Backend/src/db/productos.txt"
+    );
+
+    //se retorna el que tiene id que pasamos
+    for (producto of productosRegistrados) {
+      if (producto.id_producto === idProducto) {
+        return producto;
+      }
+    }
+  } catch (error) {
+    console.log(
+      error +
+        "/nel comercio cuyo dueño tiene el id " +
+        idUsuario +
+        " no se encontró"
+    );
+  }
+}
+function tomarProductos() {
+  try {
+    let productosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/productos.txt"
+    );
+
+    return productosRegistrados;
+  } catch (error) {
+    console.error("Error al leer o parsear el archivo de comercios:", error);
+    return [];
+  }
+}
+
 //Metodos para consultar bd. path-> ruta del archivo .json--------------------------------------------------------
 function obtenerObjetosBD(path) {
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
@@ -78,4 +114,6 @@ function escribirObjetosBD(path, objeto) {
 
 module.exports = {
   guardarProducto,
+  tomarProductoPorId,
+  tomarProductos,
 };
