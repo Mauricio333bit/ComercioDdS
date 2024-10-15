@@ -91,6 +91,27 @@ function tomarProductos() {
     return [];
   }
 }
+function tomarProductosDeUnComercio(idComercio) {
+  try {
+    let productosRegistrados = obtenerObjetosBD(
+      "../Backend/src/db/productos.txt"
+    );
+
+    //se retorna un nuevo array de los productos con el fk que pasamos
+    const productos = productosRegistrados.filter(
+      (producto) => producto.fk_id_comercio !== idComercio
+    );
+    return productos;
+  } catch (error) {
+    console.log(
+      error +
+        "/nel comercio cuyo dueño tiene el id " +
+        idUsuario +
+        " no se encontró"
+    );
+    return error;
+  }
+}
 
 //Metodos para consultar bd. path-> ruta del archivo .json--------------------------------------------------------
 function obtenerObjetosBD(path) {
@@ -116,4 +137,5 @@ module.exports = {
   guardarProducto,
   tomarProductoPorId,
   tomarProductos,
+  tomarProductosDeUnComercio,
 };

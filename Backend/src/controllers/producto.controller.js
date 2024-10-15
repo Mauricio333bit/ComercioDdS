@@ -2,7 +2,7 @@ const Producto = require("../models/producto.model");
 //al de comercio lo usamos para agregar,revisar este caso de uso***
 const Comercio = require("../models/comercio.model");
 //con los datos que vinen en el cuerpo(body) de la solicitud
-const registrarProducto = (req, res) => {
+const registerProduct = (req, res) => {
   try {
     console.log(req.file);
     console.log(req.body);
@@ -17,7 +17,7 @@ const registrarProducto = (req, res) => {
       descuento,
     } = req.body;
 
-    // El id del comercio lo obtenemos de los parámetros de la URL
+    // El id del comercio lo obtenemos de los parámetros de la url
     const idComercio = req.params.id;
 
     // Obtener las rutas de las imágenes subidas
@@ -47,7 +47,7 @@ const registrarProducto = (req, res) => {
   }
 };
 
-const getProductoById = (req, res) => {
+const getProductById = (req, res) => {
   try {
     const id = req.params.id;
 
@@ -76,10 +76,31 @@ const getAllProducts = (req, res) => {
   }
 };
 
-const eliminarProducto = (req, res) => {
+const getPoductsByStoreId = (req, res) => {
   try {
     const id = req.params.id;
-    let usuariosActualizados = User.eliminarUsuario(id);
+
+    const productos = Producto.tomarProductosDeUnComercio(id);
+    if (!productos) {
+      res.status(404).send({
+        message: "El id ingresado no corresponde a ningun comercio",
+      });
+    }
+    res.status(200).send(comercio);
+  } catch (error) {
+    res.status(500).send({
+      message:
+        "Productos no encontrados cuyo id de comercio es: " +
+        id +
+        ".Error en cntroller",
+    });
+  }
+};
+
+const eliminarProducto = async (req, res) => {
+  try {
+    const id = req.params.id;
+    let usuariosActualizados = await User.eliminarUsuario(id);
     console.log(usuariosActualizados);
     res.status(200).send({ message: "Usuario eliminado correctamente" });
   } catch (error) {
@@ -91,4 +112,9 @@ const editarProducto = (req, res) => {
     const id = req.params.id;
   } catch (error) {}
 };
-module.exports = { registrarProducto, getProductoById, getAllProducts };
+module.exports = {
+  registerProduct,
+  getProductById,
+  getAllProducts,
+  getPoductsByStoreId,
+};

@@ -9,13 +9,9 @@ const storage = multer.diskStorage({
     // Basado en la ruta de la solicitud,si la ruta incluye la cadena de string que definimos almacena en determinada carpeta,a futuro si decidimos incluir foto al usuario o al comercio
 
     if (req.route.path.includes("/producto")) {
-      folderPath = "./uploads/productos"; // Carpeta para productos
+      folderPath = path.join(__dirname, "uploads", "productos"); // Carpeta para productos
     }
-    //  else if (req.route.path.includes("/usuario")) {
-    //   folderPath = "./uploads/usuarios"; // Carpeta para usuarios
-    // } else if (req.route.path.includes("/comercio")) {
-    //   folderPath = "./uploads/comercios"; // Carpeta para comercios
-    // }
+
     cb(null, folderPath);
   },
   filename: function (req, file, cb) {
@@ -49,7 +45,7 @@ app.post("/usuario/registrar", userController.registerUser);
 app.post("/login", userController.loginUser);
 
 app.post("/usuario/:id", userController.getUserById);
-app.get("/usuario", userController.getAllUsers);
+app.get("/usuario", userController.getAllUsers); //
 app.delete("/usuario/:id", userController.deleteUser);
 app.post("/usuario/editar/:id", userController.editUser);
 
@@ -67,7 +63,8 @@ app.delete("/comercio/:id", comercioController.deleteStore);
 app.post(
   "/producto/registrar/:id",
   upload.array("imgProducto", 3),
-  productoController.registrarProducto
+  productoController.registerProduct
 );
-app.get("/producto/:id", productoController.getProductoById);
+app.get("/producto/:id", productoController.getProductById);
 app.get("/producto", productoController.getAllProducts);
+app.get("/producto/comercio/:id", productoController.getPoductsByStoreId);
