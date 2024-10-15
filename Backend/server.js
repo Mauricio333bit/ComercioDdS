@@ -26,6 +26,7 @@ const upload = multer({ storage: storage });
 const userController = require("./src/controllers/usuario.controller");
 const comercioController = require("./src/controllers/comercio.controller");
 const productoController = require("./src/controllers/producto.controller");
+const categoriaController = require("./src/controllers/categoria.controller");
 
 //app
 const app = express();
@@ -48,6 +49,10 @@ app.post("/usuario/:id", userController.getUserById);
 app.get("/usuario", userController.getAllUsers); //
 app.delete("/usuario/:id", userController.deleteUser);
 app.post("/usuario/editar/:id", userController.editUser);
+
+//rutas categoria
+app.post("/categoria/registrar", categoriaController.registerCategoria);
+app.delete("/categoria/eliminar/:id", categoriaController.deleteCategoria)
 
 //rutas comercio
 
