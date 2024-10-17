@@ -35,15 +35,6 @@ function escribirObjetosBD(path, objetos) {
 }
 
 
-
-
-
-
-
-
-
-
-
 function eliminarCategoria(idCategoria) {
   try {
     let categoriasRegistradas = obtenerObjetosBD(
@@ -64,7 +55,58 @@ function eliminarCategoria(idCategoria) {
 
 
 
+
+
+
+
+
+function actualizarCategoria(idCategoria, datosActualizados) {
+  try {
+    let categoriasRegistradas = obtenerObjetosBD(
+      "../Backend/src/db/categorias.txt"
+    );
+
+    console.log("ID de categoría ingresado:", idCategoria);
+console.log("Categorías registradas:", categoriasRegistradas);
+
+    //encontrar el indice donde se ubica el usuario a actualizar
+    const indiceCategoria = categoriasRegistradas.findIndex(
+      (categoria) => categoria.idCategoria === idCategoria
+    );
+    
+    //cuando no encuentre coincidencia el findIndex retorna el valor -1
+    if (indiceCategoria === -1) {
+      throw new Error("Categoria no encontrada");
+    }
+
+    // Actualizamos solo los campos proporcionados
+    //   "..." este operador, permite "desempaquetar" los elementos de un objeto o array.
+
+    const categoriaActualizada = {
+      ...categoriasRegistradas[indiceCategoria], //"desempaqueta" todas las propiedades y sus valores
+      ...datosActualizados, // cualquier propiedad que exista en ambos objetos será sobrescrita por el valor en datosActualizados, las demas se mantienen y no se modifian
+    };
+
+    // Aseguramos que el ID sea el que viene en parametros
+    categoriaActualizada.id_categoria = idCategoria;
+
+    // Reemplazamos el usuario en el array
+    categoriasRegistradas[indiceCategoria] = categoriaActualizada;
+
+    // Escribimos los cambios en el archivo
+    escribirObjetosBD("../backend/src/db/categorias.txt", categoriasRegistradas);
+
+    return categoriaActualizada;
+  } catch (error) {
+    console.error("Error al actualizar categoria:", error.message);
+    throw error;
+  }
+}
+
+
+
 module.exports = {
   guardarCategoria, // Exportamos guardarCategoria
   eliminarCategoria,
+  actualizarCategoria,
 };
