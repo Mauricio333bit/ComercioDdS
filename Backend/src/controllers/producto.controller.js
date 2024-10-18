@@ -21,7 +21,7 @@ const registerProduct = (req, res) => {
     const idComercio = req.params.id;
 
     // Obtener las rutas de las imágenes subidas
-    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto
+    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto.
 
     // Registrar el nuevo producto
     const productoNuevo = Producto.guardarProducto({

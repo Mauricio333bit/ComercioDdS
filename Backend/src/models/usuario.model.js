@@ -10,22 +10,10 @@ class Usuario {
     this.telefono = telefono;
     this.rol = rol;
   }
-
-  static fromJSONtoObjectUsuario(dataUser) {
-    let nuevoUsuario = new Usuario(
-      dataUser.nombre,
-      dataUser.email,
-      dataUser["contrasena"],
-      dataUser.telefono,
-      dataUser.rol
-    );
-
-    return nuevoUsuario;
-  }
 }
 
 function guardarUsuario(dataBody) {
-  const usuarioNuevo = Usuario.fromJSONtoObjectUsuario(dataBody);
+  const usuarioNuevo = new Usuario(...dataBody);
 
   let usuariosRegistrados = obtenerObjetosBD("../backend/src/db/usuarios.txt");
 
