@@ -34,11 +34,13 @@
   },
   {
     "idCategoria": "2263f3f5-77f2-4f7f-816c-bc33102d8262",
-    "nombre": "Alimentos"
+    "nombre": "Alimentoss",
+    "id_categoria": "2263f3f5-77f2-4f7f-816c-bc33102d8262"
   },
   {
     "idCategoria": "ec6cd24c-787d-449a-95f3-0b30d92e6fe2",
-    "nombre": "Alimentos"
+    "nombre": "Ropaaa",
+    "id_categoria": "ec6cd24c-787d-449a-95f3-0b30d92e6fe2"
   },
   {
     "idCategoria": "5e4e33b2-37eb-4cd7-bbee-be68242a4065",

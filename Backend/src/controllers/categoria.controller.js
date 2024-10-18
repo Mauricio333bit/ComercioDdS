@@ -1,4 +1,4 @@
-const { guardarCategoria, eliminarCategoria } = require('../models/categoria.model.js');
+const { guardarCategoria, eliminarCategoria, actualizarCategoria } = require('../models/categoria.model.js');
 
 const registerCategoria = (req, res) => {
   try {
@@ -27,7 +27,43 @@ const deleteCategoria = (req, res) => {
   }
 };
 
+
+
+
+const editCategoria = (req, res) => {
+  try {
+    const id = req.params.id;
+    const newData = req.body;
+    
+
+    console.log("ID recibido:", id);
+    console.log("Datos para actualizar:", newData);
+    
+    // Cambia Categoria.actualizarCategoria por actualizarCategoria directamente
+    const categoriaActualizada = actualizarCategoria(id, newData);
+
+    if (!categoriaActualizada) {
+      return res.status(404).send({ message: "El id ingresado no corresponde a ninguna categoría" });
+    }
+
+    return res.status(200).send({ message: "Categoría actualizada correctamente", categoria: categoriaActualizada });
+  } catch (error) {
+    return res.status(500).send({ message: "No se pudo actualizar la categoría", error: error.message });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {
   registerCategoria,
   deleteCategoria,
+  editCategoria,
 };
