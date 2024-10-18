@@ -5,18 +5,18 @@ function autenticarUsuario(reqBody) {
   // console.log("seguridad <-r- modelo '[{Usuario}]'");
   let usuariosRegistrados = User.getUsuarios();
 
-  if (reqBody.contraseña) {
+  if (reqBody.contrasena) {
     let usuarioAutorizado = usuariosRegistrados.find(
       // el metodo find de array nos retorna el primer elemento qye cumpla las condiciones
       (usuarioDeLaColeccion) =>
         reqBody.email === usuarioDeLaColeccion.email &&
-        reqBody.contraseña === usuarioDeLaColeccion.contraseña
+        reqBody.contrasena === usuarioDeLaColeccion.contrasena
     );
 
     if (!usuarioAutorizado) {
       return false;
     }
-    return true;
+    return usuarioAutorizado;
   } else {
     throw new Error("no ingresaste contraseña");
   }
