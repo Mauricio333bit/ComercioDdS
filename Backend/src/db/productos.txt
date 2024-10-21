@@ -1,1 +1,52 @@
-[{"id_producto":"a98c16a7-66f9-4f55-b6ee-d5625325aaf0","nombre_producto":"pan","precio":"25","detalles":"no hay","categoria":"1","disponibilidad":"true","imagenes":["uploads\\productos\\1728361263027.png","uploads\\productos\\1728361263051.jpg"],"oferta":"","descuento":"","fk_id_comercio":"123123"},{"id_producto":"71055bf3-6834-4d39-b005-88f01e22b851","nombre_producto":"pan","precio":"25","detalles":"no hay","categoria":"1","disponibilidad":"true","imagenes":["uploads\\productos\\1728433219243.png","uploads\\productos\\1728433219271.jpg"],"oferta":"","descuento":"","fk_id_comercio":"62043261-64a7-4568-b1da-f973e354995b"},{"id_producto":"fa3fae95-319b-40b0-9c50-94201ba2b31c","nombre_producto":"azucar","precio":"2","detalles":"no hay","categoria":"1","disponibilidad":"true","imagenes":["uploads\\productos\\1728434942553.png","uploads\\productos\\1728434942577.jpg"],"oferta":"","descuento":"","fk_id_comercio":"62043261-64a7-4568-b1da-f973e354995b"},{"id_producto":"77c50b14-408c-442b-b90b-0b76eb585386","nombre_producto":"Zapatilla","precio":"2","detalles":"no hay","categoria":"1","disponibilidad":"true","imagenes":["C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440572225.png","C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440572249.jpg"],"oferta":"","descuento":"","fk_id_comercio":"62043261-64a7-4568-b1da-f973e354995b"},{"id_producto":"f06a6a9a-5bb8-40d7-ad2a-89a586e6d721","nombre_producto":"Zapatilla","precio":"2","detalles":"no hay","categoria":"1","disponibilidad":"true","imagenes":["C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440597856.png","C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440597870.jpg"],"oferta":"","descuento":"","fk_id_comercio":"b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"}]
+[
+  {
+    "id_producto": "71055bf3-6834-4d39-b005-88f01e22b851",
+    "nombre_producto": "pan",
+    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
+  },
+  {
+    "id_producto": "fa3fae95-319b-40b0-9c50-94201ba2b31c",
+    "nombre_producto": "azucar",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "uploads\\productos\\1728434942553.png",
+      "uploads\\productos\\1728434942577.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
+  },
+  {
+    "id_producto": "77c50b14-408c-442b-b90b-0b76eb585386",
+    "nombre_producto": "Zapatilla",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440572225.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440572249.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
+  },
+  {
+    "id_producto": "f06a6a9a-5bb8-40d7-ad2a-89a586e6d721",
+    "nombre_producto": "Zapatilla",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440597856.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440597870.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  }
+]

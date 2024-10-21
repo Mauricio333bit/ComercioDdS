@@ -76,45 +76,88 @@ const getAllProducts = (req, res) => {
   }
 };
 
-const getPoductsByStoreId = (req, res) => {
+const getProductsByStoreId = (req, res) => {
   try {
-    const id = req.params.id;
+    // Asegúrate de usar 'id' correctamente
+    const idComercio = req.params.id; // Obtiene el ID del comercio de los parámetros de la solicitud
 
-    const productos = Producto.tomarProductosDeUnComercio(id);
-    if (!productos) {
-      res.status(404).send({
-        message: "El id ingresado no corresponde a ningun comercio",
-      });
+    const productos = Producto.tomarProductosDeUnComercio(idComercio);
+    if (productos.length === 0) {
+      return res.status(404).send({ message: "No se encontraron productos para el comercio con ID: " + idComercio });
     }
-    res.status(200).send(comercio);
+    
+    return res.status(200).send({
+      message: "Productos encontrados",
+      productos,
+    });
   } catch (error) {
-    res.status(500).send({
-      message:
-        "Productos no encontrados cuyo id de comercio es: " +
-        id +
-        ".Error en cntroller",
+    return res.status(500).send({
+      message: "Error al obtener productos del comercio con ID: " + idComercio,
+      error: error.message,
     });
   }
 };
 
-const eliminarProducto = async (req, res) => {
+
+const deleteProducto = (req, res) => {
   try {
     const id = req.params.id;
-    let usuariosActualizados = await User.eliminarUsuario(id);
-    console.log(usuariosActualizados);
-    res.status(200).send({ message: "Usuario eliminado correctamente" });
+
+    // Llama al modelo para eliminar el producto
+    let productosActualizados = Producto.eliminarProducto(id);
+
+    // Si el producto no fue encontrado, podrías devolver un 404
+    if (!productosActualizados || productosActualizados.length === 0) {
+      return res.status(404).send({ message: "Producto no encontrado o ya eliminado" });
+    }
+
+    // Si todo va bien, responde con éxito
+    res.status(200).send({ message: "Producto eliminado correctamente" });
   } catch (error) {
-    res.status(400).send({ message: "no se pudo eliminar" });
+    // Manejo de errores en caso de falla
+    res.status(500).send({ message: "No se pudo eliminar", error: error.message });
   }
 };
+
+
 const editarProducto = (req, res) => {
   try {
     const id = req.params.id;
-  } catch (error) {}
+
+    // Desestructura los nuevos datos del cuerpo de la solicitud
+    const { nombre, precio, detalles, categoria, disponibilidad, oferta, descuento, imgProducto } = req.body;
+
+    // Crear un objeto con los nuevos datos
+    const nuevosDatos = {
+      nombre: nombre || undefined,
+      precio: precio || undefined,
+      detalles: detalles || undefined,
+      categoria: categoria || undefined,
+      disponibilidad: disponibilidad || undefined,
+      oferta: oferta || undefined,
+      descuento: descuento || undefined,
+      imagenes: imgProducto || undefined,
+    };
+
+    // Llama al modelo para editar el producto
+    const productoActualizado = Producto.editarProducto(id, nuevosDatos);
+
+    return res.status(200).send({
+      message: "Producto editado exitosamente",
+      producto: productoActualizado,
+    });
+  } catch (error) {
+    return res.status(500).send({ message: "No se pudo editar el producto", error: error.message });
+  }
 };
+
+
+
 module.exports = {
   registerProduct,
   getProductById,
   getAllProducts,
-  getPoductsByStoreId,
+  getProductsByStoreId,
+  deleteProducto,
+  editarProducto,
 };

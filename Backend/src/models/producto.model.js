@@ -12,7 +12,7 @@ class Producto {
     oferta,
     descuento,
     fk_id_comercio
-  ) {
+  ) {8
     this.id_producto = uuidv4();
     this.nombre_producto = nombre;
     this.precio = precio;
@@ -113,29 +113,116 @@ function tomarProductosDeUnComercio(idComercio) {
   }
 }
 
+
+
+const path = require('path');
+
+function eliminarProducto(idProducto) {
+  try {
+    const filePath = path.join(__dirname, "../db/productos.txt");
+    console.log("Ruta generada para productos.txt:", filePath); // Depuración
+
+    let productosRegistrados = obtenerObjetosBD(filePath);
+
+    // Asegúrate de que productosRegistrados sea un array
+    if (!Array.isArray(productosRegistrados)) {
+      throw new Error("Error al leer los productos");
+    }
+
+    const productosActualizados = productosRegistrados.filter(
+      (producto) => producto.id_producto !== idProducto
+    );
+
+    // Escribir el archivo actualizado
+    escribirObjetosBD(filePath, productosActualizados);
+
+    return productosActualizados;
+  } catch (error) {
+    throw new Error("Error al eliminar desde el model: " + error.message);
+  }
+}
+
+
+function editarProducto(idProducto, nuevosDatos) {
+  try {
+    const filePath = path.join(__dirname, "../db/productos.txt");
+    console.log("Ruta generada para productos.txt:", filePath);
+
+    let productosRegistrados = obtenerObjetosBD(filePath);
+
+    const productoIndex = productosRegistrados.findIndex(
+      (producto) => producto.id_producto === idProducto
+    );
+
+    if (productoIndex === -1) {
+      throw new Error("Producto no encontrado");
+    }
+
+    const productoActualizado = { ...productosRegistrados[productoIndex], ...nuevosDatos };
+    productosRegistrados[productoIndex] = productoActualizado;
+
+    escribirObjetosBD(filePath, productosRegistrados);
+
+    return productoActualizado;
+  } catch (error) {
+    throw new Error("Error al editar el producto: " + error.message);
+  }
+};
+
+function tomarProductosDeUnComercio(idComercio) {
+  try {
+    let productosRegistrados = obtenerObjetosBD("../backend/src/db/productos.txt");
+
+    // Se retorna un nuevo array de los productos que tienen el fk_id_comercio que pasamos
+    const productos = productosRegistrados.filter(
+      (producto) => producto.fk_id_comercio === idComercio // Cambia !== a === para filtrar correctamente
+    );
+
+    return productos;
+  } catch (error) {
+    console.log(error + "/ El comercio cuyo dueño tiene el id " + idComercio + " no se encontró");
+    return [];
+  }
+};
+
+
+
+
 //Metodos para consultar bd. path-> ruta del archivo .json--------------------------------------------------------
 function obtenerObjetosBD(path) {
-  let stringDeObjetos = fs.readFileSync(path, "utf-8");
-  if (!stringDeObjetos.trim()) {
-    console.log("El archivo está vacío.");
-    return []; // Retorna un array vacío cuando aun no se cargan productos
+  try {
+    let stringDeObjetos = fs.readFileSync(path, "utf-8");
+    if (!stringDeObjetos.trim()) {
+      console.log("El archivo está vacío.");
+      return []; // Retorna un array vacío cuando aun no se cargan productos
+    }
+    let objetosEnBD = JSON.parse(stringDeObjetos);
+    return objetosEnBD;
+  } catch (error) {
+    console.error("Error al leer el archivo:", error); // Imprimir el error específico
+    throw new Error("No se pudo leer la base de datos");
   }
-  let objetosEnBD = JSON.parse(stringDeObjetos);
-
-  return objetosEnBD;
 }
 
-function escribirObjetosBD(path, objeto) {
-  if (!path || !objeto) {
+
+
+function escribirObjetosBD(filePath, objeto) {
+  const fs = require("fs");
+
+  if (!filePath || !objeto) {
     return false;
   }
-  fs.writeFileSync(path, JSON.stringify(objeto));
+  fs.writeFileSync(filePath, JSON.stringify(objeto, null, 2)); // Formato JSON legible
   return true;
 }
+
 
 module.exports = {
   guardarProducto,
   tomarProductoPorId,
   tomarProductos,
+  tomarProductosDeUnComercio,
+  eliminarProducto,
+  editarProducto,
   tomarProductosDeUnComercio,
 };
