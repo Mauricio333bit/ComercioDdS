@@ -1,0 +1,1 @@
+[{"id_usuario":"12adbf3c-9152-4eef-ad2b-93fdf49a124c","nombre":"test","email":"test@gmail.com","contrasena":"33","telefono":"test3","rol":true}]

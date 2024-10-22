@@ -1,0 +1,49 @@
+[
+  {
+    "idCategoria": "a835977d-3160-4ac2-aeb8-9b4caa340e89"
+  },
+  {
+    "idCategoria": "ab2855aa-d1eb-4fff-83be-9ef42e3a3a57"
+  },
+  {
+    "idCategoria": "e9f2c865-9db1-4f6f-8eb0-8b84dd6f11ed"
+  },
+  {
+    "idCategoria": "0f6ed45d-ce6b-43c1-beda-e1bbbd623abc"
+  },
+  {
+    "idCategoria": "4148998d-f9ac-424d-baad-2065d89d7ea1",
+    "nombre": "Limpieza"
+  },
+  {
+    "idCategoria": "9c5be839-13fd-4870-8e19-693cc16ffacc"
+  },
+  {
+    "idCategoria": "3b78d85d-a5f3-4594-b86c-3a29696ac7f3"
+  },
+  {
+    "idCategoria": "4da1e8ff-7e08-48fc-8066-e74e8033e1ee",
+    "nombre": "Limpieza"
+  },
+  {
+    "idCategoria": "a8b456bc-ba46-484a-a970-bbe484682e0d"
+  },
+  {
+    "idCategoria": "8f7a146d-3480-43df-be11-1e40d0865485",
+    "nombre": "Limpieza"
+  },
+  {
+    "idCategoria": "2263f3f5-77f2-4f7f-816c-bc33102d8262",
+    "nombre": "Alimentoss",
+    "id_categoria": "2263f3f5-77f2-4f7f-816c-bc33102d8262"
+  },
+  {
+    "idCategoria": "ec6cd24c-787d-449a-95f3-0b30d92e6fe2",
+    "nombre": "Ropaaa",
+    "id_categoria": "ec6cd24c-787d-449a-95f3-0b30d92e6fe2"
+  },
+  {
+    "idCategoria": "5e4e33b2-37eb-4cd7-bbee-be68242a4065",
+    "nombre": "Ropa"
+  }
+]
