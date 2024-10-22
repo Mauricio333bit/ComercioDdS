@@ -43,7 +43,7 @@ class Producto {
 }
 
 function guardarProducto(data) {
-  console.log("Aaaaaa");
+
   console.log(data);
   const productoNuevo = Producto.fromJSONtoObjectProducto(data);
   console.log(productoNuevo);
