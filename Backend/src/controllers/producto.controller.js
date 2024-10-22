@@ -36,7 +36,7 @@ const registerProduct = (req, res) => {
       idComercio,
     });
     //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
-    Comercio.agregarProductoAComercio(idComercio, productoNuevo);
+    //Comercio.agregarProductoAComercio(idComercio, productoNuevo);
 
     return res.status(201).send({
       message: "Producto registrado exitosamente",

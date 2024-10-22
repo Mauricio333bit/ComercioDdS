@@ -6,20 +6,34 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     let folderPath;
 
-    // Basado en la ruta de la solicitud,si la ruta incluye la cadena de string que definimos almacena en determinada carpeta,a futuro si decidimos incluir foto al usuario o al comercio
-
+    // Verifica que la ruta contiene "/producto"
     if (req.route.path.includes("/producto")) {
-      folderPath = path.join(__dirname, "uploads", "productos"); // Carpeta para productos
+      folderPath = path.join(__dirname, "uploads"); // Carpeta para productos
+    } else {
+      return cb(new Error('Ruta no válida para la subida de archivos')); // Manejar error si no se encuentra el destino
+    }
+
+    // Asegúrate de que la carpeta existe
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true }); // Crea la carpeta si no existe
     }
 
     cb(null, folderPath);
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Guardar el archivo con un nombre único
+    cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para el archivo
   },
 });
 
+
 const upload = multer({ storage: storage });
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, "uploads");
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
 // ------------------------------------------------------------------------------
 
 //controladores

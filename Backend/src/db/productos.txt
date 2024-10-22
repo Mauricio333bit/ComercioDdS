@@ -48,5 +48,41 @@
     "oferta": "",
     "descuento": "",
     "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  },
+  {
+    "id_producto": "4aebdf7a-69bc-4ee8-85ef-eb731e151306",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865021.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865023.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865127.jpg"
+    ],
+    "fk_id_comercio": "565656"
+  },
+  {
+    "id_producto": "33f21815-d132-4cbb-910e-a7b28ce9274b",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996491.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996493.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996571.jpg"
+    ],
+    "fk_id_comercio": "565656"
+  },
+  {
+    "id_producto": "976d265b-e647-48c5-98f1-e3b99c3023db",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026093.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026094.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026133.jpg"
+    ],
+    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  },
+  {
+    "id_producto": "28e3fd95-9275-4dc1-9416-eb366d18a932",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157811.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157813.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157893.jpg"
+    ],
+    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
   }
 ]
