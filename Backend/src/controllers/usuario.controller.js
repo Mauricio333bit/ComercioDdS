@@ -46,11 +46,16 @@ const getAllUsers = (req, res) => {
 };
 const loginUser = (req, res) => {
   try {
+    console.log(req.body);
     let usuarioAutorizado = seguridad.autenticarUsuario(req.body);
+    console.log(usuarioAutorizado);
+    console.log(usuarioAutorizado.id_usuario);
     if (!usuarioAutorizado) {
       res.status(400).send({ message: "Los datos ingresados no son validos" });
     }
-    res.status(200).send("Usuario logueado con exito");
+    res
+      .status(200)
+      .send({ message: "Usuario logueado con exito", usuarioAutorizado });
   } catch (error) {
     res.status(404).send({ error: error.message });
   }

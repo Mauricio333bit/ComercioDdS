@@ -6,24 +6,34 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     let folderPath;
 
-    // Basado en la ruta de la solicitud,si la ruta incluye la cadena de string que definimos almacena en determinada carpeta,a futuro si decidimos incluir foto al usuario o al comercio
-
+    // Verifica que la ruta contiene "/producto"
     if (req.route.path.includes("/producto")) {
-      folderPath = "./uploads/productos"; // Carpeta para productos
+      folderPath = path.join(__dirname, "uploads"); // Carpeta para productos
+    } else {
+      return cb(new Error('Ruta no válida para la subida de archivos')); // Manejar error si no se encuentra el destino
     }
-    //  else if (req.route.path.includes("/usuario")) {
-    //   folderPath = "./uploads/usuarios"; // Carpeta para usuarios
-    // } else if (req.route.path.includes("/comercio")) {
-    //   folderPath = "./uploads/comercios"; // Carpeta para comercios
-    // }
+
+    // Asegúrate de que la carpeta existe
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true }); // Crea la carpeta si no existe
+    }
+
     cb(null, folderPath);
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Guardar el archivo con un nombre único
+    cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para el archivo
   },
 });
 
+
 const upload = multer({ storage: storage });
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, "uploads");
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
 // ------------------------------------------------------------------------------
 
 //controladores
@@ -50,7 +60,7 @@ app.post("/usuario/registrar", userController.registerUser);
 app.post("/login", userController.loginUser);
 
 app.post("/usuario/:id", userController.getUserById);
-app.get("/usuario", userController.getAllUsers);
+app.get("/usuario", userController.getAllUsers); //
 app.delete("/usuario/:id", userController.deleteUser);
 app.post("/usuario/editar/:id", userController.editUser);
 
@@ -58,6 +68,7 @@ app.post("/usuario/editar/:id", userController.editUser);
 app.post("/categoria/registrar", categoriaController.registerCategoria);
 app.delete("/categoria/eliminar/:id", categoriaController.deleteCategoria);
 app.post("/categoria/editar/:id", categoriaController.editCategoria);
+app.get("/categorias", categoriaController.getAllCategorias);
 
 //rutas comercio
 
@@ -70,10 +81,12 @@ app.delete("/comercio/:id", comercioController.deleteStore);
 // rutas productos
 
 // (desde el front vendra un input type file con el atributo name="imgProducto")
-app.post(
-  "/producto/registrar/:id",
-  upload.array("imgProducto", 3),
-  productoController.registrarProducto
-);
-app.get("/producto/:id", productoController.getProductoById);
+app.post("/producto/registrar/:id", upload.array("imgProducto"), productoController.registerProduct);
+
+app.get("/producto/:id", productoController.getProductById);
 app.get("/producto", productoController.getAllProducts);
+app.delete("/producto/:id", productoController.deleteProducto);
+app.put("/producto/editar/:id", productoController.editarProducto);
+app.get("/producto/comercio/:id", productoController.getProductsByStoreId);
+
+

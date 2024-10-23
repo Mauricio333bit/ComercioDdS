@@ -2,7 +2,7 @@ const Producto = require("../models/producto.model");
 //al de comercio lo usamos para agregar,revisar este caso de uso***
 const Comercio = require("../models/comercio.model");
 //con los datos que vinen en el cuerpo(body) de la solicitud
-const registrarProducto = (req, res) => {
+const registerProduct = (req, res) => {
   try {
     console.log(req.file);
     console.log(req.body);
@@ -17,11 +17,11 @@ const registrarProducto = (req, res) => {
       descuento,
     } = req.body;
 
-    // El id del comercio lo obtenemos de los parámetros de la URL
+    // El id del comercio lo obtenemos de los parámetros de la url
     const idComercio = req.params.id;
 
     // Obtener las rutas de las imágenes subidas
-    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto
+    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto.
 
     // Registrar el nuevo producto
     const productoNuevo = Producto.guardarProducto({
@@ -36,7 +36,7 @@ const registrarProducto = (req, res) => {
       idComercio,
     });
     //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
-    Comercio.agregarProductoAComercio(idComercio, productoNuevo);
+    //Comercio.agregarProductoAComercio(idComercio, productoNuevo);
 
     return res.status(201).send({
       message: "Producto registrado exitosamente",
@@ -47,7 +47,7 @@ const registrarProducto = (req, res) => {
   }
 };
 
-const getProductoById = (req, res) => {
+const getProductById = (req, res) => {
   try {
     const id = req.params.id;
 
@@ -76,19 +76,88 @@ const getAllProducts = (req, res) => {
   }
 };
 
-const eliminarProducto = (req, res) => {
+const getProductsByStoreId = (req, res) => {
   try {
-    const id = req.params.id;
-    let usuariosActualizados = User.eliminarUsuario(id);
-    console.log(usuariosActualizados);
-    res.status(200).send({ message: "Usuario eliminado correctamente" });
+    // Asegúrate de usar 'id' correctamente
+    const idComercio = req.params.id; // Obtiene el ID del comercio de los parámetros de la solicitud
+
+    const productos = Producto.tomarProductosDeUnComercio(idComercio);
+    if (productos.length === 0) {
+      return res.status(404).send({ message: "No se encontraron productos para el comercio con ID: " + idComercio });
+    }
+    
+    return res.status(200).send({
+      message: "Productos encontrados",
+      productos,
+    });
   } catch (error) {
-    res.status(400).send({ message: "no se pudo eliminar" });
+    return res.status(500).send({
+      message: "Error al obtener productos del comercio con ID: " + idComercio,
+      error: error.message,
+    });
   }
 };
+
+
+const deleteProducto = (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // Llama al modelo para eliminar el producto
+    let productosActualizados = Producto.eliminarProducto(id);
+
+    // Si el producto no fue encontrado, podrías devolver un 404
+    if (!productosActualizados || productosActualizados.length === 0) {
+      return res.status(404).send({ message: "Producto no encontrado o ya eliminado" });
+    }
+
+    // Si todo va bien, responde con éxito
+    res.status(200).send({ message: "Producto eliminado correctamente" });
+  } catch (error) {
+    // Manejo de errores en caso de falla
+    res.status(500).send({ message: "No se pudo eliminar", error: error.message });
+  }
+};
+
+
 const editarProducto = (req, res) => {
   try {
     const id = req.params.id;
-  } catch (error) {}
+
+    // Desestructura los nuevos datos del cuerpo de la solicitud
+    const { nombre, precio, detalles, categoria, disponibilidad, oferta, descuento, imgProducto } = req.body;
+
+    // Crear un objeto con los nuevos datos
+    const nuevosDatos = {
+      nombre: nombre || undefined,
+      precio: precio || undefined,
+      detalles: detalles || undefined,
+      categoria: categoria || undefined,
+      disponibilidad: disponibilidad || undefined,
+      oferta: oferta || undefined,
+      descuento: descuento || undefined,
+      imagenes: imgProducto || undefined,
+    };
+
+    // Llama al modelo para editar el producto
+    const productoActualizado = Producto.editarProducto(id, nuevosDatos);
+
+    return res.status(200).send({
+      message: "Producto editado exitosamente",
+      producto: productoActualizado,
+    });
+  } catch (error) {
+    return res.status(500).send({ message: "No se pudo editar el producto", error: error.message });
+  }
 };
-module.exports = { registrarProducto, getProductoById, getAllProducts };
+
+
+
+module.exports = {
+  registerProduct,
+  getProductById,
+  getAllProducts,
+  getProductsByStoreId,
+  deleteProducto,
+  editarProducto,
+};

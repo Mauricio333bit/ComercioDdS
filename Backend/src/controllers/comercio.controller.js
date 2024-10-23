@@ -7,10 +7,10 @@ const registerStore = (req, res) => {
     const idUsuario = req.params.id;
 
     const comercioNuevo = Comercio.guardarComercio(idUsuario, req.body);
-    console.log(comercioNuevo);
+    console.log(comercioNuevo + " esto retorna el model"); //[objetc Object]????
     return res
       .status(201)
-      .send({ message: "Creaste un nuevo comercio: " + comercioNuevo });
+      .send({ message: "Creaste un nuevo comercio: " + comercioNuevo.nombre });
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }
