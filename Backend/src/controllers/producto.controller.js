@@ -124,10 +124,26 @@ const editarProducto = (req, res) => {
   try {
     const id = req.params.id;
 
-    // Desestructura los nuevos datos del cuerpo de la solicitud
-    const { nombre, precio, detalles, categoria, disponibilidad, oferta, descuento, imgProducto } = req.body;
+    // Verificar si req.files contiene archivos de imagen
+    console.log("Archivos subidos:", req.files); // Para verificar en consola
 
-    // Crear un objeto con los nuevos datos
+    // Procesar los nuevos datos del cuerpo
+    const {
+      nombre,
+      precio,
+      detalles,
+      categoria,
+      disponibilidad,
+      oferta,
+      descuento,
+    } = req.body;
+
+    // Procesar las nuevas imágenes, si existen
+    const nuevasImagenes = req.files && req.files.length > 0
+      ? req.files.map((file) => file.path)
+      : [];
+
+    // Crear objeto con los nuevos datos
     const nuevosDatos = {
       nombre: nombre || undefined,
       precio: precio || undefined,
@@ -136,10 +152,10 @@ const editarProducto = (req, res) => {
       disponibilidad: disponibilidad || undefined,
       oferta: oferta || undefined,
       descuento: descuento || undefined,
-      imagenes: imgProducto || undefined,
+      imagenes: nuevasImagenes.length > 0 ? nuevasImagenes : undefined,
     };
 
-    // Llama al modelo para editar el producto
+    // Llamar al modelo para editar el producto
     const productoActualizado = Producto.editarProducto(id, nuevosDatos);
 
     return res.status(200).send({
@@ -147,9 +163,17 @@ const editarProducto = (req, res) => {
       producto: productoActualizado,
     });
   } catch (error) {
+    console.error("Error al editar el producto:", error);
     return res.status(500).send({ message: "No se pudo editar el producto", error: error.message });
   }
 };
+
+
+
+
+
+
+
 
 
 

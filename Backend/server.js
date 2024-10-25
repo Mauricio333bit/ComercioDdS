@@ -85,7 +85,7 @@ app.post("/producto/registrar/:id", upload.array("imgProducto"), productoControl
 app.get("/producto/:id", productoController.getProductById);
 app.get("/producto", productoController.getAllProducts);
 app.delete("/producto/:id", productoController.deleteProducto);
-app.put("/producto/editar/:id", productoController.editarProducto);
+app.put("/producto/editar/:id",upload.array("imgProducto"), productoController.editarProducto);
 app.get("/producto/comercio/:id", productoController.getProductsByStoreId);
 
 

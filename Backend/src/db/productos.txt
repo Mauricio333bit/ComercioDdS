@@ -84,5 +84,33 @@
       "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157893.jpg"
     ],
     "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  },
+  {
+    "id_producto": "19e8c1e5-07f2-4ce7-9b3d-0c49c8f79ef2",
+    "fk_id_comercio": "2615099308",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036102.jpg",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036103.jpg",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036106.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303958.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303968.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303974.png"
+    ],
+    "nombre": "Enzo",
+    "precio": "5030",
+    "detalles": "Profe",
+    "categoria": "casado",
+    "disponibilidad": "si",
+    "oferta": "si",
+    "descuento": "no"
+  },
+  {
+    "id_producto": "f616a506-4f05-4349-8026-139f8a422b86",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771784.jpg",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771804.JPG",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771820.jpg"
+    ],
+    "fk_id_comercio": "2615099308"
   }
 ]
