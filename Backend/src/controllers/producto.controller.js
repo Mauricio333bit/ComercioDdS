@@ -36,7 +36,7 @@ const registerProduct = (req, res) => {
       idComercio,
     });
     //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
-    Comercio.agregarProductoAComercio(idComercio, productoNuevo);
+    // Comercio.agregarProductoAComercio(idComercio, productoNuevo);
 
     return res.status(201).send({
       message: "Producto registrado exitosamente",
@@ -83,9 +83,12 @@ const getProductsByStoreId = (req, res) => {
 
     const productos = Producto.tomarProductosDeUnComercio(idComercio);
     if (productos.length === 0) {
-      return res.status(404).send({ message: "No se encontraron productos para el comercio con ID: " + idComercio });
+      return res.status(404).send({
+        message:
+          "No se encontraron productos para el comercio con ID: " + idComercio,
+      });
     }
-    
+
     return res.status(200).send({
       message: "Productos encontrados",
       productos,
@@ -98,7 +101,6 @@ const getProductsByStoreId = (req, res) => {
   }
 };
 
-
 const deleteProducto = (req, res) => {
   try {
     const id = req.params.id;
@@ -108,50 +110,65 @@ const deleteProducto = (req, res) => {
 
     // Si el producto no fue encontrado, podrías devolver un 404
     if (!productosActualizados || productosActualizados.length === 0) {
-      return res.status(404).send({ message: "Producto no encontrado o ya eliminado" });
+      return res
+        .status(404)
+        .send({ message: "Producto no encontrado o ya eliminado" });
     }
 
     // Si todo va bien, responde con éxito
     res.status(200).send({ message: "Producto eliminado correctamente" });
   } catch (error) {
     // Manejo de errores en caso de falla
-    res.status(500).send({ message: "No se pudo eliminar", error: error.message });
+    res
+      .status(500)
+      .send({ message: "No se pudo eliminar", error: error.message });
   }
 };
-
 
 const editarProducto = (req, res) => {
   try {
-    const id = req.params.id;
+    console.log(req.file);
+    console.log(req.body);
+    // Desestructurar el cuerpo de la solicitud para obtener los datos del producto
+    const {
+      nombre,
+      precio,
+      detalles,
+      categoria,
+      disponibilidad,
+      oferta,
+      descuento,
+    } = req.body;
 
-    // Desestructura los nuevos datos del cuerpo de la solicitud
-    const { nombre, precio, detalles, categoria, disponibilidad, oferta, descuento, imgProducto } = req.body;
+    // El id del comercio lo obtenemos de los parámetros de la url
+    const idComercio = req.params.id;
 
-    // Crear un objeto con los nuevos datos
-    const nuevosDatos = {
-      nombre: nombre || undefined,
-      precio: precio || undefined,
-      detalles: detalles || undefined,
-      categoria: categoria || undefined,
-      disponibilidad: disponibilidad || undefined,
-      oferta: oferta || undefined,
-      descuento: descuento || undefined,
-      imagenes: imgProducto || undefined,
-    };
+    // Obtener las rutas de las imágenes subidas
+    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto.
 
-    // Llama al modelo para editar el producto
-    const productoActualizado = Producto.editarProducto(id, nuevosDatos);
+    // Registrar el nuevo producto
+    const productoNuevo = Producto.guardarProducto({
+      nombre,
+      precio,
+      detalles,
+      categoria,
+      disponibilidad,
+      imgProducto, // Pasar las rutas de las imágenes
+      oferta,
+      descuento,
+      idComercio,
+    });
+    //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
+    // Comercio.agregarProductoAComercio(idComercio, productoNuevo);
 
-    return res.status(200).send({
-      message: "Producto editado exitosamente",
-      producto: productoActualizado,
+    return res.status(201).send({
+      message: "Producto registrado exitosamente",
+      producto: productoNuevo,
     });
   } catch (error) {
-    return res.status(500).send({ message: "No se pudo editar el producto", error: error.message });
+    return res.status(500).send({ error: error.message });
   }
 };
-
-
 
 module.exports = {
   registerProduct,

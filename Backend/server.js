@@ -66,12 +66,18 @@ app.delete("/comercio/:id", comercioController.deleteStore);
 // rutas productos
 
 // (desde el front vendra un input type file con el atributo name="imgProducto")
-app.post("/producto/registrar/:id", upload.array("imgProducto"), productoController.registerProduct);
+app.post(
+  "/producto/registrar/:id",
+  upload.array("imgProducto"),
+  productoController.registerProduct
+);
 
 app.get("/producto/:id", productoController.getProductById);
 app.get("/producto", productoController.getAllProducts);
 app.delete("/producto/:id", productoController.deleteProducto);
-app.put("/producto/editar/:id", productoController.editarProducto);
+app.put(
+  "/producto/editar/:id",
+  upload.array("imgProducto"),
+  productoController.editarProducto
+);
 app.get("/producto/comercio/:id", productoController.getProductsByStoreId);
-
-

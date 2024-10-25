@@ -5,7 +5,7 @@ const User = require("../models/usuario.model.js");
 const registerUser = (req, res) => {
   try {
     //ejecutamos el metodo del modelo y le pasamos los datos requeridoss
-    const usuarioNuevo = User.guardarUsuario(req.body);
+    const usuarioNuevo = User.guardarUsuario(...req.body);
 
     return res
       .status(201)

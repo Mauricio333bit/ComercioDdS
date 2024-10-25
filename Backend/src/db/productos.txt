@@ -48,5 +48,35 @@
     "oferta": "",
     "descuento": "",
     "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  },
+  {
+    "id_producto": "f5e7e320-a504-480a-a813-844d8507b465",
+    "nombre_producto": "Zapatilla",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887271726.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887271764.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  },
+  {
+    "id_producto": "458085a9-7467-4f90-8d8b-9eaea805e653",
+    "nombre_producto": "Zapatilla",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887435276.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887435348.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
   }
 ]
