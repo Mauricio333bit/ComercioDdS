@@ -68,6 +68,7 @@ app.post("/usuario/editar/:id", userController.editUser);
 app.post("/categoria/registrar", categoriaController.registerCategoria);
 app.delete("/categoria/eliminar/:id", categoriaController.deleteCategoria);
 app.post("/categoria/editar/:id", categoriaController.editCategoria);
+app.get("/categorias", categoriaController.getAllCategorias);
 
 //rutas comercio
 

@@ -66,8 +66,8 @@ function actualizarCategoria(idCategoria, datosActualizados) {
       "../Backend/src/db/categorias.txt"
     );
 
-    console.log("ID de categoría ingresado:", idCategoria);
-console.log("Categorías registradas:", categoriasRegistradas);
+   
+
 
     //encontrar el indice donde se ubica el usuario a actualizar
     const indiceCategoria = categoriasRegistradas.findIndex(
@@ -103,10 +103,24 @@ console.log("Categorías registradas:", categoriasRegistradas);
   }
 }
 
+function getCategorias() {
+  try {
+    let categoriasRegistradas = obtenerObjetosBD( "../Backend/src/db/categorias.txt" );
+    console.log("Categorías registradas:", categoriasRegistradas);
+
+    return categoriasRegistradas;
+  } catch (error) {
+    console.error("Error al leer o parsear el archivo de categorias:", error);
+    return [];
+  }
+}
+
+
 
 
 module.exports = {
   guardarCategoria, // Exportamos guardarCategoria
   eliminarCategoria,
   actualizarCategoria,
+  getCategorias,
 };

@@ -1,4 +1,4 @@
-const { guardarCategoria, eliminarCategoria, actualizarCategoria } = require('../models/categoria.model.js');
+const { guardarCategoria, eliminarCategoria, actualizarCategoria, getCategorias } = require('../models/categoria.model.js');
 
 const registerCategoria = (req, res) => {
   try {
@@ -53,6 +53,19 @@ const editCategoria = (req, res) => {
 };
 
 
+const getAllCategorias = (req, res) => {
+  try {
+    // Llamar directamente a la función importada 'getCategorias' en lugar de 'Categoria.getCategorias'
+    const categoriasRegistradas = getCategorias(); 
+    console.log("Categorías registradas:", categoriasRegistradas);
+
+    return res
+      .status(201)
+      .send({ message: "Categorias registradas: ", categoriasRegistradas });
+  } catch (error) {
+    return res.status(500).send({ error: error.message });
+  }
+};
 
 
 
@@ -66,4 +79,5 @@ module.exports = {
   registerCategoria,
   deleteCategoria,
   editCategoria,
+  getAllCategorias,
 };
