@@ -54,9 +54,9 @@ const loginUser = (req, res) => {
     if (!usuarioAutorizado) {
       res.status(400).send({ message: "Los datos ingresados no son validos" });
     }
-    res
-      .status(200)
-      .send({ message: "Usuario logueado con exito", usuarioAutorizado });
+   return res.status(200).send({
+      message: "Usuario logueado con éxito",usuarioAutorizado
+    });
   } catch (error) {
     res.status(404).send({ error: error.message });
   }

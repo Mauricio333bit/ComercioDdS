@@ -10,7 +10,7 @@ const registerStore = (req, res) => {
     console.log(comercioNuevo + " esto retorna el model"); //[objetc Object]????
     return res
       .status(201)
-      .send({ message: "Creaste un nuevo comercio: " + comercioNuevo.nombre });
+      .send({ message: "Creaste un nuevo comercio: ", comercioNuevo });
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }
