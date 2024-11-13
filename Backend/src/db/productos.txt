@@ -103,14 +103,5 @@
     "disponibilidad": "si",
     "oferta": "si",
     "descuento": "no"
-  },
-  {
-    "id_producto": "f616a506-4f05-4349-8026-139f8a422b86",
-    "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771784.jpg",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771804.JPG",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771820.jpg"
-    ],
-    "fk_id_comercio": "2615099308"
   }
 ]

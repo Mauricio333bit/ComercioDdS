@@ -103,21 +103,18 @@ const deleteProducto = (req, res) => {
   try {
     const id = req.params.id;
 
-    // Llama al modelo para eliminar el producto
     let productosActualizados = Producto.eliminarProducto(id);
 
-    // Si el producto no fue encontrado, podrías devolver un 404
     if (!productosActualizados || productosActualizados.length === 0) {
       return res.status(404).send({ message: "Producto no encontrado o ya eliminado" });
     }
 
-    // Si todo va bien, responde con éxito
-    res.status(200).send({ message: "Producto eliminado correctamente" });
+    res.status(200).send({ message: "Producto y sus imágenes eliminados correctamente" });
   } catch (error) {
-    // Manejo de errores en caso de falla
     res.status(500).send({ message: "No se pudo eliminar", error: error.message });
   }
 };
+
 
 
 const editarProducto = (req, res) => {
