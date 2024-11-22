@@ -12,7 +12,8 @@ class Producto {
     oferta,
     descuento,
     fk_id_comercio
-  ) {8
+  ) {
+    8;
     this.id_producto = uuidv4();
     this.nombre_producto = nombre;
     this.precio = precio;
@@ -43,7 +44,6 @@ class Producto {
 }
 
 function guardarProducto(data) {
-
   console.log(data);
   const productoNuevo = Producto.fromJSONtoObjectProducto(data);
   console.log(productoNuevo);
@@ -113,9 +113,7 @@ function tomarProductosDeUnComercio(idComercio) {
   }
 }
 
-
-
-const path = require('path');
+const path = require("path");
 
 function eliminarProducto(idProducto) {
   try {
@@ -142,13 +140,13 @@ function eliminarProducto(idProducto) {
   }
 }
 
-
 function editarProducto(idProducto, nuevosDatos) {
   try {
-    const filePath = path.join(__dirname, "../db/productos.txt");
-
     // Leer productos actuales desde el archivo
-    let productosRegistrados = obtenerObjetosBD(filePath);
+    let productosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/productos.txt"
+    );
+    console.log(productosRegistrados);
 
     // Encontrar el producto a actualizar
     const productoIndex = productosRegistrados.findIndex(
@@ -160,7 +158,8 @@ function editarProducto(idProducto, nuevosDatos) {
     }
 
     // Gestionar imágenes: combinar actuales con nuevas si existen
-    let imagenesActualizadas = productosRegistrados[productoIndex].imagenes || [];
+    let imagenesActualizadas =
+      productosRegistrados[productoIndex].imagenes || [];
     if (nuevosDatos.imagenes && nuevosDatos.imagenes.length > 0) {
       imagenesActualizadas = [...imagenesActualizadas, ...nuevosDatos.imagenes];
     }
@@ -171,12 +170,13 @@ function editarProducto(idProducto, nuevosDatos) {
       ...nuevosDatos,
       imagenes: imagenesActualizadas,
     };
-
+    console.log(productosRegistrados[index]);
     // Reemplazar el producto actualizado en la lista
     productosRegistrados[productoIndex] = productoActualizado;
+    console.log(productosRegistrados[productoIndex]);
 
     // Guardar la lista de productos actualizada en el archivo
-    escribirObjetosBD(filePath, productosRegistrados);
+    escribirObjetosBD("../backend/src/db/productos.txt", productosRegistrados);
 
     return productoActualizado;
   } catch (error) {
@@ -184,14 +184,11 @@ function editarProducto(idProducto, nuevosDatos) {
   }
 }
 
-
-
-
-
-
 function tomarProductosDeUnComercio(idComercio) {
   try {
-    let productosRegistrados = obtenerObjetosBD("../backend/src/db/productos.txt");
+    let productosRegistrados = obtenerObjetosBD(
+      "../backend/src/db/productos.txt"
+    );
 
     // Se retorna un nuevo array de los productos que tienen el fk_id_comercio que pasamos
     const productos = productosRegistrados.filter(
@@ -200,13 +197,15 @@ function tomarProductosDeUnComercio(idComercio) {
 
     return productos;
   } catch (error) {
-    console.log(error + "/ El comercio cuyo dueño tiene el id " + idComercio + " no se encontró");
+    console.log(
+      error +
+        "/ El comercio cuyo dueño tiene el id " +
+        idComercio +
+        " no se encontró"
+    );
     return [];
   }
-};
-
-
-
+}
 
 //Metodos para consultar bd. path-> ruta del archivo .json--------------------------------------------------------
 function obtenerObjetosBD(path) {
@@ -224,8 +223,6 @@ function obtenerObjetosBD(path) {
   }
 }
 
-
-
 function escribirObjetosBD(filePath, objeto) {
   const fs = require("fs");
 
@@ -235,7 +232,6 @@ function escribirObjetosBD(filePath, objeto) {
   fs.writeFileSync(filePath, JSON.stringify(objeto, null, 2)); // Formato JSON legible
   return true;
 }
-
 
 module.exports = {
   guardarProducto,
