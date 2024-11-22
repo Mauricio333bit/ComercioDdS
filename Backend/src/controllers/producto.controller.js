@@ -36,7 +36,7 @@ const registerProduct = (req, res) => {
       idComercio,
     });
     //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
-    // Comercio.agregarProductoAComercio(idComercio, productoNuevo);
+    //Comercio.agregarProductoAComercio(idComercio, productoNuevo);
 
     return res.status(201).send({
       message: "Producto registrado exitosamente",
@@ -127,9 +127,12 @@ const deleteProducto = (req, res) => {
 
 const editarProducto = (req, res) => {
   try {
-    console.log(req.file);
-    console.log(req.body);
-    // Desestructurar el cuerpo de la solicitud para obtener los datos del producto
+    const id = req.params.id;
+
+    // Verificar si req.files contiene archivos de imagen
+    console.log("Archivos subidos:", req.files); // Para verificar en consola
+
+    // Procesar los nuevos datos del cuerpo
     const {
       nombre,
       precio,
@@ -140,33 +143,36 @@ const editarProducto = (req, res) => {
       descuento,
     } = req.body;
 
-    // El id del comercio lo obtenemos de los parámetros de la url
-    const idComercio = req.params.id;
+    // Procesar las nuevas imágenes, si existen
+    const nuevasImagenes =
+      req.files && req.files.length > 0
+        ? req.files.map((file) => file.path)
+        : [];
 
-    // Obtener las rutas de las imágenes subidas
-    const imgProducto = req.files.map((file) => file.path); // Por cada file toma la ruta y la almacena en un arrray, ese array lo almacenamos en imgProducto.
+    // Crear objeto con los nuevos datos
+    const nuevosDatos = {
+      nombre: nombre || undefined,
+      precio: precio || undefined,
+      detalles: detalles || undefined,
+      categoria: categoria || undefined,
+      disponibilidad: disponibilidad || undefined,
+      oferta: oferta || undefined,
+      descuento: descuento || undefined,
+      imagenes: nuevasImagenes.length > 0 ? nuevasImagenes : undefined,
+    };
 
-    // Registrar el nuevo producto
-    const productoNuevo = Producto.guardarProducto({
-      nombre,
-      precio,
-      detalles,
-      categoria,
-      disponibilidad,
-      imgProducto, // Pasar las rutas de las imágenes
-      oferta,
-      descuento,
-      idComercio,
-    });
-    //agregamos el producto nuevo al array en este metodo,pero me parece que no es necesario. Porque podemos consultar a la db los productos cuyo id de comercio sea tal y asi obtenemos todos los productos
-    // Comercio.agregarProductoAComercio(idComercio, productoNuevo);
+    // Llamar al modelo para editar el producto
+    const productoActualizado = Producto.editarProducto(id, nuevosDatos);
 
-    return res.status(201).send({
-      message: "Producto registrado exitosamente",
-      producto: productoNuevo,
+    return res.status(200).send({
+      message: "Producto editado exitosamente",
+      producto: productoActualizado,
     });
   } catch (error) {
-    return res.status(500).send({ error: error.message });
+    console.error("Error al editar el producto:", error);
+    return res
+      .status(500)
+      .send({ message: "No se pudo editar el producto", error: error.message });
   }
 };
 

@@ -4,8 +4,15 @@ const User = require("../models/usuario.model.js");
 //en el body de la solicitud vienen los datos para crear el nuevo usuario
 const registerUser = (req, res) => {
   try {
+    const { nombre, email, telefono, contrasena, rol } = req.body;
     //ejecutamos el metodo del modelo y le pasamos los datos requeridoss
-    const usuarioNuevo = User.guardarUsuario(...req.body);
+    const usuarioNuevo = User.guardarUsuario([
+      nombre,
+      email,
+      telefono,
+      contrasena,
+      rol,
+    ]);
 
     return res
       .status(201)

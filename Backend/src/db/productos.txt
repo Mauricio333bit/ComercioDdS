@@ -1,82 +1,156 @@
 [
   {
-    "id_producto": "71055bf3-6834-4d39-b005-88f01e22b851",
-    "nombre_producto": "pan",
-    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
-  },
-  {
-    "id_producto": "fa3fae95-319b-40b0-9c50-94201ba2b31c",
-    "nombre_producto": "azucar",
+    "id_producto": "b8b70b9c-f608-49dc-928a-372c2253ad8c",
+    "nombre_producto": "ZApatina",
     "precio": "2",
     "detalles": "no hay",
     "categoria": "1",
     "disponibilidad": "true",
     "imagenes": [
-      "uploads\\productos\\1728434942553.png",
-      "uploads\\productos\\1728434942577.jpg"
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729892131493.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729892131509.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b",
+    "nombre": "azucar",
+    "imgProducto": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895790492.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895790515.jpg"
+    ]
+  },
+  {
+    "id_producto": "319b2182-9f02-42cd-a61e-102e211bf517",
+    "nombre_producto": "axucar",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895830103.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895830128.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b",
+    "nombre": "azucar",
+    "imgProducto": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896083667.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896083688.jpg"
+    ]
+  },
+  {
+    "id_producto": "4ce74342-6131-4a33-a591-bc0622e5b4ac",
+    "nombre_producto": "remera",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896115802.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896115833.jpg"
+    ],
+    "oferta": "",
+    "descuento": "",
+    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b",
+    "nombre": "pantalon",
+    "imgProducto": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896136242.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896136256.jpg"
+    ]
+  },
+  {
+    "id_producto": "e843d09e-edd3-4575-b51c-db736cc77f87",
+    "nombre_producto": "papas",
+    "precio": "2",
+    "detalles": "no hay",
+    "categoria": "1",
+    "disponibilidad": "true",
+    "imagenes": [
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896440969.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896440997.jpg"
     ],
     "oferta": "",
     "descuento": "",
     "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
   },
   {
-    "id_producto": "77c50b14-408c-442b-b90b-0b76eb585386",
-    "nombre_producto": "Zapatilla",
+    "id_producto": "3f6bbff3-79bc-4ad3-983f-1b4f6fd06b44",
+    "nombre_producto": "chicle",
     "precio": "2",
     "detalles": "no hay",
     "categoria": "1",
     "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440572225.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440572249.jpg"
-    ],
-    "oferta": "",
-    "descuento": "",
-    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
-  },
-  {
-    "id_producto": "f06a6a9a-5bb8-40d7-ad2a-89a586e6d721",
-    "nombre_producto": "Zapatilla",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
-    "disponibilidad": "true",
-    "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440597856.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1728440597870.jpg"
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896754158.png",
+      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896754221.jpg"
     ],
     "oferta": "",
     "descuento": "",
     "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
   },
   {
-    "id_producto": "f5e7e320-a504-480a-a813-844d8507b465",
-    "nombre_producto": "Zapatilla",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
-    "disponibilidad": "true",
+    "id_producto": "4aebdf7a-69bc-4ee8-85ef-eb731e151306",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887271726.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887271764.jpg"
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865021.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865023.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865127.jpg"
     ],
-    "oferta": "",
-    "descuento": "",
+    "fk_id_comercio": "565656"
+  },
+  {
+    "id_producto": "33f21815-d132-4cbb-910e-a7b28ce9274b",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996491.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996493.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996571.jpg"
+    ],
+    "fk_id_comercio": "565656"
+  },
+  {
+    "id_producto": "976d265b-e647-48c5-98f1-e3b99c3023db",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026093.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026094.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026133.jpg"
+    ],
     "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
   },
   {
-    "id_producto": "458085a9-7467-4f90-8d8b-9eaea805e653",
-    "nombre_producto": "Zapatilla",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
-    "disponibilidad": "true",
+    "id_producto": "28e3fd95-9275-4dc1-9416-eb366d18a932",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887435276.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\productos\\1729887435348.jpg"
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157811.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157813.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157893.jpg"
     ],
-    "oferta": "",
-    "descuento": "",
     "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+  },
+  {
+    "id_producto": "19e8c1e5-07f2-4ce7-9b3d-0c49c8f79ef2",
+    "fk_id_comercio": "2615099308",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036102.jpg",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036103.jpg",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036106.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303958.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303968.png",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303974.png"
+    ],
+    "nombre": "Enzo",
+    "precio": "5030",
+    "detalles": "Profe",
+    "categoria": "casado",
+    "disponibilidad": "si",
+    "oferta": "si",
+    "descuento": "no"
+  },
+  {
+    "id_producto": "f616a506-4f05-4349-8026-139f8a422b86",
+    "imagenes": [
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771784.jpg",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771804.JPG",
+      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729886771820.jpg"
+    ],
+    "fk_id_comercio": "2615099308"
   }
 ]

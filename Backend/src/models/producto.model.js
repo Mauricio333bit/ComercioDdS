@@ -146,10 +146,11 @@ function eliminarProducto(idProducto) {
 function editarProducto(idProducto, nuevosDatos) {
   try {
     const filePath = path.join(__dirname, "../db/productos.txt");
-    console.log("Ruta generada para productos.txt:", filePath);
 
+    // Leer productos actuales desde el archivo
     let productosRegistrados = obtenerObjetosBD(filePath);
 
+    // Encontrar el producto a actualizar
     const productoIndex = productosRegistrados.findIndex(
       (producto) => producto.id_producto === idProducto
     );
@@ -158,16 +159,35 @@ function editarProducto(idProducto, nuevosDatos) {
       throw new Error("Producto no encontrado");
     }
 
-    const productoActualizado = { ...productosRegistrados[productoIndex], ...nuevosDatos };
+    // Gestionar imágenes: combinar actuales con nuevas si existen
+    let imagenesActualizadas = productosRegistrados[productoIndex].imagenes || [];
+    if (nuevosDatos.imagenes && nuevosDatos.imagenes.length > 0) {
+      imagenesActualizadas = [...imagenesActualizadas, ...nuevosDatos.imagenes];
+    }
+
+    // Actualizar el producto con nuevos datos y las imágenes actualizadas
+    const productoActualizado = {
+      ...productosRegistrados[productoIndex],
+      ...nuevosDatos,
+      imagenes: imagenesActualizadas,
+    };
+
+    // Reemplazar el producto actualizado en la lista
     productosRegistrados[productoIndex] = productoActualizado;
 
+    // Guardar la lista de productos actualizada en el archivo
     escribirObjetosBD(filePath, productosRegistrados);
 
     return productoActualizado;
   } catch (error) {
     throw new Error("Error al editar el producto: " + error.message);
   }
-};
+}
+
+
+
+
+
 
 function tomarProductosDeUnComercio(idComercio) {
   try {
