@@ -118,20 +118,42 @@ const path = require("path");
 function eliminarProducto(idProducto) {
   try {
     const filePath = path.join(__dirname, "../db/productos.txt");
-    console.log("Ruta generada para productos.txt:", filePath); // Depuración
+    console.log("Ruta generada para productos.txt:", filePath);
 
     let productosRegistrados = obtenerObjetosBD(filePath);
 
-    // Asegúrate de que productosRegistrados sea un array
     if (!Array.isArray(productosRegistrados)) {
       throw new Error("Error al leer los productos");
     }
 
+    // Buscar el producto a eliminar y obtener sus imágenes
+    const productoAEliminar = productosRegistrados.find(
+      (producto) => producto.id_producto === idProducto
+    );
+
+    if (!productoAEliminar) {
+      throw new Error("Producto no encontrado");
+    }
+
+    // Eliminar cada imagen relacionada con el producto
+    if (productoAEliminar.imagenes && productoAEliminar.imagenes.length > 0) {
+      productoAEliminar.imagenes.forEach((imagenPath) => {
+        try {
+          if (fs.existsSync(imagenPath)) {
+            fs.unlinkSync(imagenPath); // Elimina la imagen del sistema
+          }
+        } catch (error) {
+          console.error("Error al eliminar imagen:", imagenPath, error);
+        }
+      });
+    }
+
+    // Filtrar el producto a eliminar de la lista
     const productosActualizados = productosRegistrados.filter(
       (producto) => producto.id_producto !== idProducto
     );
 
-    // Escribir el archivo actualizado
+    // Guardar la lista de productos actualizada
     escribirObjetosBD(filePath, productosActualizados);
 
     return productosActualizados;

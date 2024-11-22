@@ -58,12 +58,12 @@ app.listen(port, () => {
 app.post("/usuario/registrar", userController.registerUser);
 app.post("/login", userController.loginUser);
 
-app.post("/usuario/:id", userController.getUserById);
+app.get("/usuario/:id", userController.getUserById);
 app.get("/usuario", userController.getAllUsers); //
 app.delete("/usuario/:id", userController.deleteUser);
-app.post("/usuario/editar/:id", userController.editUser);
+app.put("/usuario/editar/:id", userController.editUser);
 
-//rutas categoria
+//rutas categoria 
 app.post("/categoria/registrar", categoriaController.registerCategoria);
 app.delete("/categoria/eliminar/:id", categoriaController.deleteCategoria);
 app.post("/categoria/editar/:id", categoriaController.editCategoria);

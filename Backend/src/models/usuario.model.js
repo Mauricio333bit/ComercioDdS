@@ -23,20 +23,16 @@ function guardarUsuario(dataBody) {
   return usuarioNuevo;
 }
 function getUserById(idUsuario) {
+  
+  console.log(idUsuario);
   try {
-    let usuariosRegistrados = obtenerObjetosBD(
-      "../backend/src/db/usuarios.txt"
-    );
-    //recorremos los objetos "usuario" dentro de la coleccion de ususarios registrados, se puede usar esto o el find
-    for (usuario of usuariosRegistrados) {
-      if (usuario.idUsuario === idUsuario) {
-        return usuario;
-      }
-    }
+    let usuariosRegistrados = obtenerObjetosBD("../backend/src/db/usuarios.txt");
+    // Asegúrate de que el campo en los objetos sea 'id_usuario', no 'idUsuario'
+    return usuariosRegistrados.find(usuario => usuario.id_usuario === idUsuario);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return null;
-  }
+}
 
   //find
   // try {
@@ -71,7 +67,12 @@ function eliminarUsuario(idUsuario) {
       (usuario) => usuario.id_usuario !== idUsuario
     );
 
-    escribirObjetosBD(usuariosActualizados);
+    // if (usuariosRegistrados.length === usuariosActualizados.length) {
+    //   throw new Error("Usuario no encontrado");
+    // }
+
+    escribirObjetosBD("../backend/src/db/usuarios.txt", usuariosActualizados);
+
     return usuariosActualizados;
   } catch (error) {
     return new Error({ message: "error al eliminar" });
@@ -93,7 +94,6 @@ function actualizarUsuario(idUsuario, datosActualizados) {
 
     // Actualizamos solo los campos proporcionados
     //   "..." este operador, permite "desempaquetar" los elementos de un objeto o array.
-
     const usuarioActualizado = {
       ...usuariosRegistrados[indiceUsuario], //"desempaqueta" todas las propiedades y sus valores
       ...datosActualizados, // cualquier propiedad que exista en ambos objetos será sobrescrita por el valor en datosActualizados, las demas se mantienen y no se modifian

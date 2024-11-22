@@ -26,6 +26,7 @@ const registerUser = (req, res) => {
 const getUserById = (req, res) => {
   try {
     const id = req.params.id;
+    console.log('ID recibido en la solicitud:', id);
 
     const user = User.getUserById(id);
     //si no encontró el usuario entonces no existe user
@@ -35,7 +36,7 @@ const getUserById = (req, res) => {
         .send({ message: "El id ingresado no corresponde a ningun usuario" });
     }
     //
-    res.status(200).send(user);
+    res.status(200).send({message: "usuario encontrado", user});
   } catch (error) {
     res.status(500).send({ message: "Usuario no encontrado cuyo id: " + id });
   }
@@ -60,9 +61,9 @@ const loginUser = (req, res) => {
     if (!usuarioAutorizado) {
       res.status(400).send({ message: "Los datos ingresados no son validos" });
     }
-    res
-      .status(200)
-      .send({ message: "Usuario logueado con exito", usuarioAutorizado });
+   return res.status(200).send({
+      message: "Usuario logueado con éxito",usuarioAutorizado
+    });
   } catch (error) {
     res.status(404).send({ error: error.message });
   }
@@ -80,6 +81,7 @@ const deleteUser = (req, res) => {
 const editUser = (req, res) => {
   try {
     const id = req.params.id;
+    console.log("Id del usuario a modificar: ",id);
     const newData = req.body;
     const user = User.actualizarUsuario(id, newData);
     if (!user) {
