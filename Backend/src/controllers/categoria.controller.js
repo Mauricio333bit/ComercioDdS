@@ -1,4 +1,4 @@
-const { guardarCategoria, eliminarCategoria, actualizarCategoria, getCategorias } = require('../models/categoria.model.js');
+const { guardarCategoria, eliminarCategoria, actualizarCategoria, getCategorias, getCatById } = require('../models/categoria.model.js');
 
 const registerCategoria = (req, res) => {
   try {
@@ -26,8 +26,20 @@ const deleteCategoria = (req, res) => {
     res.status(400).send({ message: "No se pudo eliminar" });
   }
 };
+// se recibe el id de la categoria a buscar
+const obtenerCatById=(req, res)=>{
+  try {
+    const id = req.params.id;
+    console.log('Id recibido: ', id);
 
+    const categoria = getCatById(id);
 
+    res.status(200).send({message: "categoria encontrada", categoria});
+
+  } catch (error) {
+    res.status(500).send({ message: "Categoria no encontrada con id: " + id });
+  }
+}
 
 
 const editCategoria = (req, res) => {
@@ -36,7 +48,7 @@ const editCategoria = (req, res) => {
     const newData = req.body;
     
 
-    console.log("ID recibido:", id);
+    console.log("ID recibido para actualizar:", id);
     console.log("Datos para actualizar:", newData);
     
     // Cambia Categoria.actualizarCategoria por actualizarCategoria directamente
@@ -59,6 +71,7 @@ const getAllCategorias = (req, res) => {
     const categoriasRegistradas = getCategorias(); 
     console.log("Categorías registradas:", categoriasRegistradas);
 
+
     return res
       .status(201)
       .send({ message: "Categorias registradas: ", categoriasRegistradas });
@@ -80,4 +93,5 @@ module.exports = {
   deleteCategoria,
   editCategoria,
   getAllCategorias,
+  obtenerCatById
 };

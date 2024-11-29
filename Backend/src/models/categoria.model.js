@@ -53,7 +53,16 @@ function eliminarCategoria(idCategoria) {
   }
 }
 
-
+function getCatById(idCategoria){
+  console.log("id = ", idCategoria);
+  try{
+    let categoriasRegistradas = obtenerObjetosBD("../Backend/src/db/categorias.txt");
+    return categoriasRegistradas.find(categoria => categoria.idCategoria == idCategoria);
+  }catch(error){
+    console.log(error);
+    return null;
+  }
+}
 
 
 
@@ -73,7 +82,7 @@ function actualizarCategoria(idCategoria, datosActualizados) {
     const indiceCategoria = categoriasRegistradas.findIndex(
       (categoria) => categoria.idCategoria === idCategoria
     );
-    
+
     //cuando no encuentre coincidencia el findIndex retorna el valor -1
     if (indiceCategoria === -1) {
       throw new Error("Categoria no encontrada");
@@ -105,8 +114,12 @@ function actualizarCategoria(idCategoria, datosActualizados) {
 
 function getCategorias() {
   try {
-    let categoriasRegistradas = obtenerObjetosBD( "../Backend/src/db/categorias.txt" );
+    let categoriasRegistradas = obtenerObjetosBD("../Backend/src/db/categorias.txt");
     console.log("Categorías registradas:", categoriasRegistradas);
+
+    // Filtrar solo las categorías que tienen un nombre
+    categoriasRegistradas = categoriasRegistradas.filter((categoria) => categoria.nombre);
+    console.log("Categorías después de filtrar:", categoriasRegistradas);
 
     return categoriasRegistradas;
   } catch (error) {
@@ -123,4 +136,5 @@ module.exports = {
   eliminarCategoria,
   actualizarCategoria,
   getCategorias,
+  getCatById,
 };
