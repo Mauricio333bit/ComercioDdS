@@ -37,7 +37,14 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname)); // Nombre único para el archivo
   },
 });
+<<<<<<< HEAD
 const upload = multer({ storage: storage });
+=======
+
+const upload = multer({ storage: storage });
+const fs = require("fs");
+const uploadsDir = path.join(__dirname, "uploads");
+>>>>>>> 4339c34909247ed44f975f8a0c94c4ca195bbc0b
 
 // Verifica que la carpeta 'uploads' exista
 const uploadsDir = path.join(__dirname, "uploads");

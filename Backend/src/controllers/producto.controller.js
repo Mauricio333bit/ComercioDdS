@@ -83,9 +83,12 @@ const getProductsByStoreId = (req, res) => {
 
     const productos = Producto.tomarProductosDeUnComercio(idComercio);
     if (productos.length === 0) {
-      return res.status(404).send({ message: "No se encontraron productos para el comercio con ID: " + idComercio });
+      return res.status(404).send({
+        message:
+          "No se encontraron productos para el comercio con ID: " + idComercio,
+      });
     }
-    
+
     return res.status(200).send({
       message: "Productos encontrados",
       productos,
@@ -98,7 +101,6 @@ const getProductsByStoreId = (req, res) => {
   }
 };
 
-
 const deleteProducto = (req, res) => {
   try {
     const id = req.params.id;
@@ -106,16 +108,20 @@ const deleteProducto = (req, res) => {
     let productosActualizados = Producto.eliminarProducto(id);
 
     if (!productosActualizados || productosActualizados.length === 0) {
-      return res.status(404).send({ message: "Producto no encontrado o ya eliminado" });
+      return res
+        .status(404)
+        .send({ message: "Producto no encontrado o ya eliminado" });
     }
 
-    res.status(200).send({ message: "Producto y sus imágenes eliminados correctamente" });
+    res
+      .status(200)
+      .send({ message: "Producto y sus imágenes eliminados correctamente" });
   } catch (error) {
-    res.status(500).send({ message: "No se pudo eliminar", error: error.message });
+    res
+      .status(500)
+      .send({ message: "No se pudo eliminar", error: error.message });
   }
 };
-
-
 
 const editarProducto = (req, res) => {
   try {
@@ -136,9 +142,10 @@ const editarProducto = (req, res) => {
     } = req.body;
 
     // Procesar las nuevas imágenes, si existen
-    const nuevasImagenes = req.files && req.files.length > 0
-      ? req.files.map((file) => file.path)
-      : [];
+    const nuevasImagenes =
+      req.files && req.files.length > 0
+        ? req.files.map((file) => file.path)
+        : [];
 
     // Crear objeto con los nuevos datos
     const nuevosDatos = {
@@ -161,18 +168,11 @@ const editarProducto = (req, res) => {
     });
   } catch (error) {
     console.error("Error al editar el producto:", error);
-    return res.status(500).send({ message: "No se pudo editar el producto", error: error.message });
+    return res
+      .status(500)
+      .send({ message: "No se pudo editar el producto", error: error.message });
   }
 };
-
-
-
-
-
-
-
-
-
 
 module.exports = {
   registerProduct,

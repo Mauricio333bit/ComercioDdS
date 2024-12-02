@@ -6,7 +6,13 @@ const registerUser = (req, res) => {
   try {
     const { nombre, email, telefono, contrasena, rol } = req.body;
     //ejecutamos el metodo del modelo y le pasamos los datos requeridoss
-    const usuarioNuevo = User.guardarUsuario([nombre, email, telefono, contrasena, rol]);
+    const usuarioNuevo = User.guardarUsuario([
+      nombre,
+      email,
+      telefono,
+      contrasena,
+      rol,
+    ]);
 
     return res
       .status(201)
