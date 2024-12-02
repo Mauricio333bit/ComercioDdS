@@ -66,8 +66,10 @@ app.put("/usuario/editar/:id", userController.editUser);
 //rutas categoria 
 app.post("/categoria/registrar", categoriaController.registerCategoria);
 app.delete("/categoria/eliminar/:id", categoriaController.deleteCategoria);
-app.post("/categoria/editar/:id", categoriaController.editCategoria);
+app.put("/categoria/editar/:id", categoriaController.editCategoria);
 app.get("/categorias", categoriaController.getAllCategorias);
+app.get("/categoria/:id", categoriaController.obtenerCatById);
+
 
 //rutas comercio
 
