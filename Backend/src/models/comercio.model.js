@@ -112,7 +112,7 @@ function eliminarComercio(idComercio) {
       (comercio) => comercio.idComercio !== idComercio
     );
 
-    escribirObjetosBD(comerciosActualizados);
+    escribirObjetosBD("../Backend/src/db/comercios.txt", comerciosActualizados);
     return comerciosActualizados;
   } catch (error) {
     return new Error({ message: "error al eliminar desde el model" });
