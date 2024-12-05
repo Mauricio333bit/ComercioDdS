@@ -32,21 +32,30 @@ const getStoreById = (req, res) => {
   }
 };
 const getStoreByOwnerId = (req, res) => {
-  //creo que usar la palabra get nos va ayudar a identificar el metodo en la ruta
   try {
     const id = req.params.id;
 
-    const comercio = Comercio.tomarComercioPorIdUsuarioDueño(id);
-    if (!comercio) {
-      res.status(404).send({
-        message: "El id ingresado no corresponde a ningun dueño de comercio",
+    console.log("ID recibido para buscar comercios:", id);
+
+    // obtener comercios relacionados
+    const comercios = Comercio.tomarComercioPorIdUsuarioDueño(id);
+
+    console.log("Comercios relacionados al usuario:", comercios);
+
+    if (!comercios || comercios.length === 0) {
+      return res.status(404).send({
+        message: "No hay comercios relacionados con este usuario.",
       });
     }
-    res.status(200).send(comercio);
+
+    // responde con los comercios que se encontraron
+    res.status(200).send({ comercio: comercios });
   } catch (error) {
-    res.status(500).send({ message: "Usuario no encontrado cuyo id: " + id });
+    console.error("Error al obtener comercios por ID de usuario:", error);
+    res.status(500).send({ message: "Error interno del servidor." });
   }
 };
+
 const getAllStores = (req, res) => {
   try {
     const comerciosRegistrados = Comercio.tomarComercios();
