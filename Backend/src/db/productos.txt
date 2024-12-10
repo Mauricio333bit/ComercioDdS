@@ -1,156 +1,258 @@
 [
   {
-    "id_producto": "b8b70b9c-f608-49dc-928a-372c2253ad8c",
-    "nombre_producto": "ZApatina",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
+    "id_producto": "d8bbfc63-eaef-4a07-bcfe-9fbb03f718a2",
+    "nombre_producto": "Termo Stanlo",
+    "precio": "3000",
+    "detalles": "1lt color: rojo,negro,azul",
+    "categoria": "23",
     "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729892131493.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729892131509.jpg"
+      "http://localhost:3333/uploads/1733249989750.jpg",
+      "http://localhost:3333/uploads/1733249989788.jpg",
+      "http://localhost:3333/uploads/1733249989922.jpg"
     ],
-    "oferta": "",
-    "descuento": "",
-    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b",
-    "nombre": "azucar",
-    "imgProducto": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895790492.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895790515.jpg"
-    ]
+    "oferta": "true",
+    "descuento": "25",
+    "fk_id_comercio": "59b9ffc7-20d5-4708-8c0f-2dfb9e5553c8"
   },
   {
-    "id_producto": "319b2182-9f02-42cd-a61e-102e211bf517",
-    "nombre_producto": "axucar",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
+    "id_producto": "7a66521a-6ee0-4fd4-bf9d-ad810684923d",
+    "nombre_producto": "Servicio medico",
+    "precio": "12000",
+    "detalles": "Lunes Martes y Jueves. 10hs-17hs",
+    "categoria": "23",
     "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895830103.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729895830128.jpg"
+      "http://localhost:3333/uploads/1733250143652.jpg",
+      "http://localhost:3333/uploads/1733250143655.jpg",
+      "http://localhost:3333/uploads/1733250143659.jpg"
     ],
-    "oferta": "",
-    "descuento": "",
-    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b",
-    "nombre": "azucar",
-    "imgProducto": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896083667.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896083688.jpg"
-    ]
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "59b9ffc7-20d5-4708-8c0f-2dfb9e5553c8"
   },
   {
-    "id_producto": "4ce74342-6131-4a33-a591-bc0622e5b4ac",
-    "nombre_producto": "remera",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
+    "id_producto": "49b524d7-c6f2-41b2-986a-c8717a6ec311",
+    "nombre_producto": "Salon de Fiesta",
+    "precio": "500000",
+    "detalles": "Contactar para ver disponibilidad",
+    "categoria": "23",
     "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896115802.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896115833.jpg"
+      "http://localhost:3333/uploads/1733250312720.jpg",
+      "http://localhost:3333/uploads/1733250312728.jpg",
+      "http://localhost:3333/uploads/1733250312731.jpg"
     ],
-    "oferta": "",
-    "descuento": "",
-    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b",
-    "nombre": "pantalon",
-    "imgProducto": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896136242.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896136256.jpg"
-    ]
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "d5a7f3c1-f5fd-41c7-8593-e2c9d887e1fb"
   },
   {
-    "id_producto": "e843d09e-edd3-4575-b51c-db736cc77f87",
-    "nombre_producto": "papas",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
+    "id_producto": "7036ce7d-e1db-4b61-abd6-a52655a6cbac",
+    "nombre_producto": "Sonido e iluminacion",
+    "precio": "600000",
+    "detalles": "Contactar para ver disponibilidad",
+    "categoria": "23",
     "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896440969.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896440997.jpg"
+      "http://localhost:3333/uploads/1733250443545.png",
+      "http://localhost:3333/uploads/1733250443551.png",
+      "http://localhost:3333/uploads/1733250443560.webp"
     ],
-    "oferta": "",
-    "descuento": "",
-    "fk_id_comercio": "62043261-64a7-4568-b1da-f973e354995b"
+    "oferta": "true",
+    "descuento": "20",
+    "fk_id_comercio": "d5a7f3c1-f5fd-41c7-8593-e2c9d887e1fb"
   },
   {
-    "id_producto": "3f6bbff3-79bc-4ad3-983f-1b4f6fd06b44",
-    "nombre_producto": "chicle",
-    "precio": "2",
-    "detalles": "no hay",
-    "categoria": "1",
+    "id_producto": "34a99640-d552-4ad6-bb25-4664b6bca6c8",
+    "nombre_producto": "Gallinas",
+    "precio": "2000",
+    "detalles": "Distintas especies ",
+    "categoria": "23",
     "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896754158.png",
-      "C:\\Users\\mauri\\Desktop\\DdS\\3erAño\\Practica Profesionalizante\\ComercioDdS\\Backend\\uploads\\1729896754221.jpg"
+      "http://localhost:3333/uploads/1733252784839.png",
+      "http://localhost:3333/uploads/1733252784840.png",
+      "http://localhost:3333/uploads/1733252784846.png"
     ],
-    "oferta": "",
-    "descuento": "",
-    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "b2676744-6238-4e20-a2f2-6473221e99c7"
   },
   {
-    "id_producto": "4aebdf7a-69bc-4ee8-85ef-eb731e151306",
+    "id_producto": "ccc17f99-bb36-4602-9570-916a6feb716f",
+    "nombre_producto": "Huevos Frescos",
+    "precio": "200",
+    "detalles": "Cada uno 200$, venta minima 5u",
+    "categoria": "23",
+    "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865021.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865023.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625865127.jpg"
+      "http://localhost:3333/uploads/1733252903300.png",
+      "http://localhost:3333/uploads/1733252903308.png",
+      "http://localhost:3333/uploads/1733252903311.png"
     ],
-    "fk_id_comercio": "565656"
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "b2676744-6238-4e20-a2f2-6473221e99c7"
   },
   {
-    "id_producto": "33f21815-d132-4cbb-910e-a7b28ce9274b",
+    "id_producto": "59417b6c-da7f-42f8-a014-f9d027cd40b4",
+    "nombre_producto": "Parlante Grande",
+    "precio": "20000",
+    "detalles": "500w como nuevo",
+    "categoria": "23",
+    "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996491.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996493.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729625996571.jpg"
+      "http://localhost:3333/uploads/1733253019512.jpeg",
+      "http://localhost:3333/uploads/1733253019518.jpeg",
+      "http://localhost:3333/uploads/1733253019520.jpeg"
     ],
-    "fk_id_comercio": "565656"
+    "oferta": "true",
+    "descuento": "10",
+    "fk_id_comercio": "aea0d9b5-9b89-4c4e-8609-4ae1b24fe9dc"
   },
   {
-    "id_producto": "976d265b-e647-48c5-98f1-e3b99c3023db",
+    "id_producto": "59dfa902-8bc0-4c78-bc3b-cd9ba40f1be7",
+    "nombre_producto": "Remeras",
+    "precio": "2200",
+    "detalles": "Usadas en buen estado",
+    "categoria": "23",
+    "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026093.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026094.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626026133.jpg"
+      "http://localhost:3333/uploads/1733253157425.jpg",
+      "http://localhost:3333/uploads/1733253157437.jpg",
+      "http://localhost:3333/uploads/1733253157438.jpg"
     ],
-    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+    "oferta": "true",
+    "descuento": "5",
+    "fk_id_comercio": "81fbaf54-28f4-4ff9-ad6b-2eb4db0d601a"
   },
   {
-    "id_producto": "28e3fd95-9275-4dc1-9416-eb366d18a932",
+    "id_producto": "d8bbfc63-eaef-4a07-bcfe-9fbb03f718a2",
+    "nombre_producto": "Termo Stanlo",
+    "precio": "3000",
+    "detalles": "1lt color: rojo,negro,azul",
+    "categoria": "23",
+    "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157811.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157813.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729626157893.jpg"
+      "http://localhost:3333/uploads/1733249989750.jpg",
+      "http://localhost:3333/uploads/1733249989788.jpg",
+      "http://localhost:3333/uploads/1733249989922.jpg"
     ],
-    "fk_id_comercio": "b0d8a01c-d4f9-4ec9-aa9c-7c0ffefab9e7"
+    "oferta": "true",
+    "descuento": "25",
+    "fk_id_comercio": "59b9ffc7-20d5-4708-8c0f-2dfb9e5553c8"
   },
   {
-    "id_producto": "19e8c1e5-07f2-4ce7-9b3d-0c49c8f79ef2",
-    "fk_id_comercio": "2615099308",
+    "id_producto": "7a66521a-6ee0-4fd4-bf9d-ad810684923d",
+    "nombre_producto": "Servicio medico",
+    "precio": "12000",
+    "detalles": "Lunes Martes y Jueves. 10hs-17hs",
+    "categoria": "23",
+    "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036102.jpg",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036103.jpg",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888036106.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303958.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303968.png",
-      "C:\\Users\\USUARIO\\Desktop\\practica3final\\ComercioDdS\\backend\\uploads\\1729888303974.png"
+      "http://localhost:3333/uploads/1733250143652.jpg",
+      "http://localhost:3333/uploads/1733250143655.jpg",
+      "http://localhost:3333/uploads/1733250143659.jpg"
     ],
-    "nombre": "Enzo",
-    "precio": "5030",
-    "detalles": "Profe",
-    "categoria": "casado",
-    "disponibilidad": "si",
-    "oferta": "si",
-    "descuento": "no"
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "59b9ffc7-20d5-4708-8c0f-2dfb9e5553c8"
   },
   {
-    "id_producto": "e72f369e-1ed0-4add-89b4-86429dc3c033",
+    "id_producto": "49b524d7-c6f2-41b2-986a-c8717a6ec311",
+    "nombre_producto": "Salon de Fiesta",
+    "precio": "500000",
+    "detalles": "Contactar para ver disponibilidad",
+    "categoria": "23",
+    "disponibilidad": "true",
     "imagenes": [
-      "C:\\Users\\USUARIO\\Desktop\\back\\ComercioDdS\\Backend\\uploads\\1732846274517.jpg",
-      "C:\\Users\\USUARIO\\Desktop\\back\\ComercioDdS\\Backend\\uploads\\1732846274554.JPG",
-      "C:\\Users\\USUARIO\\Desktop\\back\\ComercioDdS\\Backend\\uploads\\1732846274567.jpg"
+      "http://localhost:3333/uploads/1733250312720.jpg",
+      "http://localhost:3333/uploads/1733250312728.jpg",
+      "http://localhost:3333/uploads/1733250312731.jpg"
     ],
-    "fk_id_comercio": "2615099308"
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "d5a7f3c1-f5fd-41c7-8593-e2c9d887e1fb"
+  },
+  {
+    "id_producto": "7036ce7d-e1db-4b61-abd6-a52655a6cbac",
+    "nombre_producto": "Sonido e iluminacion",
+    "precio": "600000",
+    "detalles": "Contactar para ver disponibilidad",
+    "categoria": "23",
+    "disponibilidad": "true",
+    "imagenes": [
+      "http://localhost:3333/uploads/1733250443545.png",
+      "http://localhost:3333/uploads/1733250443551.png",
+      "http://localhost:3333/uploads/1733250443560.webp"
+    ],
+    "oferta": "true",
+    "descuento": "20",
+    "fk_id_comercio": "d5a7f3c1-f5fd-41c7-8593-e2c9d887e1fb"
+  },
+  {
+    "id_producto": "34a99640-d552-4ad6-bb25-4664b6bca6c8",
+    "nombre_producto": "Gallinas",
+    "precio": "2000",
+    "detalles": "Distintas especies ",
+    "categoria": "23",
+    "disponibilidad": "true",
+    "imagenes": [
+      "http://localhost:3333/uploads/1733252784839.png",
+      "http://localhost:3333/uploads/1733252784840.png",
+      "http://localhost:3333/uploads/1733252784846.png"
+    ],
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "b2676744-6238-4e20-a2f2-6473221e99c7"
+  },
+  {
+    "id_producto": "ccc17f99-bb36-4602-9570-916a6feb716f",
+    "nombre_producto": "Huevos Frescos",
+    "precio": "200",
+    "detalles": "Cada uno 200$, venta minima 5u",
+    "categoria": "23",
+    "disponibilidad": "true",
+    "imagenes": [
+      "http://localhost:3333/uploads/1733252903300.png",
+      "http://localhost:3333/uploads/1733252903308.png",
+      "http://localhost:3333/uploads/1733252903311.png"
+    ],
+    "oferta": "false",
+    "descuento": "0",
+    "fk_id_comercio": "b2676744-6238-4e20-a2f2-6473221e99c7"
+  },
+  {
+    "id_producto": "59417b6c-da7f-42f8-a014-f9d027cd40b4",
+    "nombre_producto": "Parlante Grande",
+    "precio": "20000",
+    "detalles": "500w como nuevo",
+    "categoria": "23",
+    "disponibilidad": "true",
+    "imagenes": [
+      "http://localhost:3333/uploads/1733253019512.jpeg",
+      "http://localhost:3333/uploads/1733253019518.jpeg",
+      "http://localhost:3333/uploads/1733253019520.jpeg"
+    ],
+    "oferta": "true",
+    "descuento": "10",
+    "fk_id_comercio": "aea0d9b5-9b89-4c4e-8609-4ae1b24fe9dc"
+  },
+  {
+    "id_producto": "ba35cbb3-8bb8-42a5-bd40-c1deaef15b93",
+    "nombre_producto": "Sandia",
+    "precio": "100",
+    "detalles": "esta verder",
+    "categoria": "2263f3f5-77f2-4f7f-816c-bc33102d8262",
+    "disponibilidad": "1",
+    "imagenes": [
+      "http://localhost:3333/uploads/1733356921399.jpeg",
+      "http://localhost:3333/uploads/1733356921410.jpeg",
+      "http://localhost:3333/uploads/1733356921418.jpg"
+    ],
+    "oferta": "true",
+    "descuento": "18",
+    "fk_id_comercio": "d5a7f3c1-f5fd-41c7-8593-e2c9d887e1fb"
   }
 ]

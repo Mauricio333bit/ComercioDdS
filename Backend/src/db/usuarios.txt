@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-[{"id_usuario":"12adbf3c-9152-4eef-ad2b-93fdf49a124c","nombre":"test","email":"test@gmail.com","contrasena":"33","telefono":"test3","rol":true},{"id_usuario":"fa06cdc3-3972-4a98-904b-370598f28ae6","nombre":"seba","email":"testseba@gmail.com","contrasena":"123","telefono":"1212","rol":"false"}]
-=======
-[{"id_usuario":"12adbf3c-9152-4eef-ad2b-93fdf49a124c","nombre":"test","email":"test@gmail.com","contrasena":"33","telefono":"test3","rol":true},{"id_usuario":"2c33b673-ab15-4763-8127-7a9aa45ee286","nombre":"test","email":"test@gmail.com","contrasena":"test3","telefono":"33","rol":true},{"id_usuario":"92a432bc-7056-454c-b76c-7ee7e56d83b3","nombre":"Mauricio","email":"mauriquiroga97@gmail.com","contrasena":"2121","telefono":"2612708119","rol":"false"}]
->>>>>>> 4339c34909247ed44f975f8a0c94c4ca195bbc0b
+[{"id_usuario":"82c6f5e3-4bb5-4d0d-801c-00be16e20ce3","nombre":"tester","email":"tester@gmail.com","contrasena":"tester","telefono":"2612708119","rol":false},{"id_usuario":"074ab4a5-1abc-4437-ad77-50142b758dec","nombre":"vendedor","email":"vendedor@gmail.com","contrasena":"venta","telefono":"2612202020","rol":true},{"id_usuario":"90bfc0c7-45e5-4114-ac1c-af445527d8e9","nombre":"Rolo","email":"rolo@gmail.com","contrasena":"rolo","telefono":"2612303030","rol":true}]

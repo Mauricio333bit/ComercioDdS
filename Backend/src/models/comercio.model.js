@@ -22,23 +22,21 @@ class Comercio {
       dataComercio.fk_idUsuario
     );
     nuevoComercio.productos = dataComercio.productos || [];
-    console.log(nuevoComercio);
+
     return nuevoComercio;
   }
 }
 function guardarComercio(idUsuario, dataBody) {
-  console.log(dataBody);
   const comercioNuevo = new Comercio(
     idUsuario,
     dataBody.nombre,
     dataBody.cuit,
     dataBody.direccion
   );
-  console.log(comercioNuevo);
   let comerciosRegistrados = obtenerObjetosBD(
     "../Backend/src/db/comercios.txt"
   );
-  console.log(comerciosRegistrados);
+
   comerciosRegistrados.push(comercioNuevo);
   escribirObjetosBD("../Backend/src/db/comercios.txt", comerciosRegistrados);
 
@@ -50,10 +48,9 @@ function tomarComercioPorId(idComercio) {
     let comerciosRegistrados = obtenerObjetosBD(
       "../Backend/src/db/comercios.txt"
     );
-    console.log(comerciosRegistrados);
+
     //recorremos los objetos "comercio" dentro de la coleccion de ususarios registrados
     for (comercio of comerciosRegistrados) {
-      console.log(comercio);
       if (comercio.idComercio === idComercio) {
         return comercio;
       }
@@ -70,10 +67,9 @@ function tomarComercioPorIdUsuarioDueño(idUsuario) {
     let comerciosRegistrados = obtenerObjetosBD(
       "../Backend/src/db/comercios.txt"
     );
-    console.log(comerciosRegistrados);
+
     //recorremos los objetos "comercio" y se retorna el que tiene fk_idUsuario que pasamos
     for (comercio of comerciosRegistrados) {
-      console.log(comercio);
       if (comercio.fk_idUsuario === idUsuario) {
         return comercio;
       }
@@ -119,7 +115,6 @@ function eliminarComercio(idComercio) {
   }
 }
 function agregarProductoAComercio(idComercio, producto) {
-  console.log("entrase a agregar prod");
   let comerciosRegistrados = obtenerObjetosBD(
     "../Backend/src/db/comercios.txt"
   );
@@ -148,6 +143,27 @@ function agregarProductoAComercio(idComercio, producto) {
 
   return comercio;
 }
+function editarComercio(id, nuevosDatos) {
+  let comerciosRegistrados = obtenerObjetosBD(
+    "../Backend/src/db/comercios.txt"
+  );
+
+  const index = comerciosRegistrados.findIndex(
+    (comercio) => comercio.idComercio === id
+  );
+  if (index === -1) throw new Error("Comercio no encontrado");
+
+  const comercioEditado = {
+    ...comerciosRegistrados[index],
+    ...nuevosDatos,
+  };
+
+  comerciosRegistrados[index] = comercioEditado;
+  escribirObjetosBD("../Backend/src/db/comercios.txt", comerciosRegistrados);
+
+  return comercioEditado;
+}
+
 //Metodos para consultar bd. path-> ruta del archivo .txt--------------------------------------------------------
 function obtenerObjetosBD(path) {
   let stringDeObjetos = fs.readFileSync(path, "utf-8");
@@ -174,4 +190,5 @@ module.exports = {
   tomarComercios,
   eliminarComercio,
   agregarProductoAComercio,
+  editarComercio,
 };

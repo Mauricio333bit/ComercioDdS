@@ -5,7 +5,7 @@ const Comercio = require("../models/comercio.model");
 const registerProduct = (req, res) => {
   try {
     console.log(req.files); // Verificación de archivos subidos
-    console.log(req.body);  // Verificación de datos del cuerpo
+    console.log(req.body); // Verificación de datos del cuerpo
 
     const {
       nombre,
@@ -23,7 +23,9 @@ const registerProduct = (req, res) => {
     // Obtener las rutas de las imágenes subidas con la URL relativa
     const port = process.env.PORT || 3333; // Puerto dinámico
     const imgProducto = req.files
-      ? req.files.map((file) => `http://localhost:${port}/uploads/${file.filename}`) // Construir URL relativa
+      ? req.files.map(
+          (file) => `http://localhost:${port}/uploads/${file.filename}`
+        ) // Construir URL relativa
       : []; // Si no hay archivos, usar array vacío
 
     // Registrar el nuevo producto
@@ -117,7 +119,6 @@ module.exports = {
   // Otras funciones aquí...
 };
 
-
 // Función para eliminar un producto
 const deleteProducto = (req, res) => {
   try {
@@ -143,10 +144,6 @@ const deleteProducto = (req, res) => {
   }
 };
 
-
-
-
-
 // Función para editar un producto
 const editarProducto = (req, res) => {
   try {
@@ -169,7 +166,9 @@ const editarProducto = (req, res) => {
     const port = process.env.PORT || 3333;
     const nuevasImagenes =
       req.files && req.files.length > 0
-        ? req.files.map((file) => `http://localhost:${port}/uploads/${file.filename}`)
+        ? req.files.map(
+            (file) => `http://localhost:${port}/uploads/${file.filename}`
+          )
         : [];
 
     // Crear objeto con los nuevos datos, solo si existen valores
@@ -207,7 +206,6 @@ const editarProducto = (req, res) => {
     });
   }
 };
-
 
 module.exports = {
   registerProduct,

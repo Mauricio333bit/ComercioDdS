@@ -59,18 +59,7 @@ const getAllStores = (req, res) => {
     return res.status(500).send({ error: error.message });
   }
 };
-const getProducts = (req, res) => {
-  try {
-    const comerciosRegistrados = Comercio.tomarComercios();
 
-    return res.status(200).send({
-      message: "Todos los comercios registrados: ",
-      comerciosRegistrados,
-    });
-  } catch (error) {
-    return res.status(500).send({ error: error.message });
-  }
-};
 const deleteStore = (req, res) => {
   try {
     const id = req.params.id;
@@ -81,11 +70,40 @@ const deleteStore = (req, res) => {
     res.status(400).send({ message: "No se pudo eliminar" });
   }
 };
+const editStore = (req, res) => {
+  try {
+    const id = req.params.id;
 
+    // Verificar si el comercio existe antes de editar
+    const comercioExistente = Comercio.tomarComercioPorId(id);
+    if (!comercioExistente) {
+      return res.status(404).send({
+        message: `Comercio con id: ${id} no encontrado`,
+      });
+    }
+
+    console.log(req.body);
+    // Llamar al modelo para editar el producto, pasando el ID y los nuevos datos
+    const comercioActualizado = Comercio.editarComercio(id, req.body);
+
+    return res.status(200).send({
+      message: "Comercio editado exitosamente",
+      previo: comercioExistente,
+      actual: comercioActualizado,
+    });
+  } catch (error) {
+    console.error("Error al editar el comercio:", error);
+    return res.status(500).send({
+      message: "No se pudo editar el comercio",
+      error: error.message,
+    });
+  }
+};
 module.exports = {
   registerStore,
   getStoreById,
   getStoreByOwnerId,
   getAllStores,
   deleteStore,
+  editStore,
 };

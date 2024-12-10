@@ -25,8 +25,7 @@ const storage = multer.diskStorage({
     } else {
       return cb(new Error("Ruta no válida para la subida de archivos")); // Manejar error si no se encuentra el destino
     }
-
-    // Asegúrate de que la carpeta existe
+    //corroborar que la carpeta exista
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true }); // Crea la carpeta si no existe
     }
@@ -54,11 +53,15 @@ app.get("/api/imagenes", (req, res) => {
 
   fs.readdir(uploadDir, (err, files) => {
     if (err) {
-      return res.status(500).json({ error: "Error al leer la carpeta de imágenes." });
+      return res
+        .status(500)
+        .json({ error: "Error al leer la carpeta de imágenes." });
     }
 
     // Construir la lista de URLs de imágenes
-    const imageUrls = files.map((file) => `http://localhost:${port}/uploads/${file}`);
+    const imageUrls = files.map(
+      (file) => `http://localhost:${port}/uploads/${file}`
+    );
     res.json(imageUrls);
   });
 });
@@ -76,7 +79,6 @@ const categoriaController = require("./src/controllers/categoria.controller");
 // Rutas usuario
 app.post("/usuario/registrar", userController.registerUser);
 app.post("/login", userController.loginUser);
-
 app.get("/usuario/:id", userController.getUserById);
 app.get("/usuario", userController.getAllUsers);
 app.delete("/usuario/:id", userController.deleteUser);
@@ -95,13 +97,22 @@ app.get("/comercio/:id", comercioController.getStoreById);
 app.get("/comercio/owner/:id", comercioController.getStoreByOwnerId);
 app.get("/comercio", comercioController.getAllStores);
 app.delete("/comercio/:id", comercioController.deleteStore);
+app.put("/comercio/editar/:id", comercioController.editStore);
 
 // Rutas producto
-app.post("/producto/registrar/:id", upload.array("imgProducto"), productoController.registerProduct);
+app.post(
+  "/producto/registrar/:id",
+  upload.array("imgProducto"),
+  productoController.registerProduct
+);
 app.get("/producto/:id", productoController.getProductById);
 app.get("/producto", productoController.getAllProducts);
 app.delete("/producto/:id", productoController.deleteProducto);
-app.put("/producto/editar/:id", upload.array("imgProducto"), productoController.editarProducto);
+app.put(
+  "/producto/editar/:id",
+  upload.array("imgProducto"),
+  productoController.editarProducto
+);
 app.get("/producto/comercio/:id", productoController.getProductsByStoreId);
 
 // ------------------------------------------------------------------------------
