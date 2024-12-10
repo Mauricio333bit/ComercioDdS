@@ -153,7 +153,7 @@ const editarProducto = (req, res) => {
 
     // Nuevos datos del cuerpo
     const {
-      nombre,
+      nombre_producto,
       precio,
       detalles,
       categoria,
@@ -173,14 +173,14 @@ const editarProducto = (req, res) => {
 
     // Crear objeto con los nuevos datos, solo si existen valores
     const nuevosDatos = {
-      nombre: nombre || undefined,
+      nombre_producto: nombre_producto || undefined,
       precio: precio || undefined,
       detalles: detalles || undefined,
       categoria: categoria || undefined,
       disponibilidad: disponibilidad || undefined,
       oferta: oferta || undefined,
       descuento: descuento || undefined,
-      imagenes: nuevasImagenes.length > 0 ? nuevasImagenes : undefined,
+      // imagenes: nuevasImagenes.length > 0 ? nuevasImagenes : null, 
     };
 
     // Verificar si el producto existe antes de editar
@@ -190,9 +190,13 @@ const editarProducto = (req, res) => {
         message: `Producto con id: ${id} no encontrado`,
       });
     }
+    const updateProductos = {
+      ...productoExistente,
+      ...nuevosDatos,
+    };
 
     // Llamar al modelo para editar el producto, pasando el ID y los nuevos datos
-    const productoActualizado = Producto.editarProducto(id, nuevosDatos);
+    const productoActualizado = Producto.editarProducto(id, updateProductos );
 
     return res.status(200).send({
       message: "Producto editado exitosamente",

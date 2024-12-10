@@ -62,25 +62,31 @@ function tomarComercioPorId(idComercio) {
   }
 }
 function tomarComercioPorIdUsuarioDueño(idUsuario) {
-  console.log(idUsuario);
+  console.log("ID Usuario recibido:", idUsuario);
   try {
     let comerciosRegistrados = obtenerObjetosBD(
       "../Backend/src/db/comercios.txt"
     );
 
-    //recorremos los objetos "comercio" y se retorna el que tiene fk_idUsuario que pasamos
-    for (comercio of comerciosRegistrados) {
-      if (comercio.fk_idUsuario === idUsuario) {
-        return comercio;
-      }
-    }
-  } catch (error) {
-    console.log(
-      error +
-        "/nel comercio cuyo dueño tiene el id " +
-        idUsuario +
-        " no se encontró"
+    console.log("Comercios registrados:", comerciosRegistrados);
+
+    // filtrar los comercios relacionados al usuario
+    const comerciosRelacionados = comerciosRegistrados.filter(
+      (comercio) => comercio.fk_idUsuario === idUsuario
     );
+
+    console.log("Comercios relacionados al usuario:", comerciosRelacionados);
+
+    // retornar el array de comercios relacionados
+    return comerciosRelacionados;
+  } catch (error) {
+    console.error(
+      "Error al buscar comercios relacionados al usuario con ID " +
+        idUsuario +
+        ":",
+      error
+    );
+    return []; // retornar un array vacío si ocurre un error
   }
 }
 
