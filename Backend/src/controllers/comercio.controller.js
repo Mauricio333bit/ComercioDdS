@@ -91,7 +91,6 @@ const editStore = (req, res) => {
       });
     }
 
-    console.log(req.body);
     // Llamar al modelo para editar el producto, pasando el ID y los nuevos datos
     const comercioActualizado = Comercio.editarComercio(id, req.body);
 

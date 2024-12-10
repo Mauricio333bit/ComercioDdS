@@ -1,5 +1,6 @@
 # build output
 dist/
+db/
 
 #carpetas de cada server local que no se deberian actuializar
 uploads/
